@@ -371,7 +371,7 @@ body{
 
 .premiere-list{
     padding: 0px 24px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     gap: 24px;
 }

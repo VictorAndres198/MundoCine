@@ -187,10 +187,10 @@
                     <div style="width: 67%; margin-right: 10px; background: blue">
                         <div class="premiere-h1">Destacado Hoy</div>
                         <div class="premiere-list">
-                            <div style="background: black; height: 221.98px;">
+                            <div style="background: black; height: 221.98px; width: 394.64px;">
                                 
                             </div>
-                            <div style="background: white; height: 221.98px;">
+                            <div style="background: white; height: 221.98px; width: 394.64px;">
                                 
                             </div>
                         </div>
