@@ -28,12 +28,13 @@ body{
     flex-direction: row;
     color: white;
     justify-content: space-between;    
+    align-items: center;
 }
 
 .navbar .container-options .options .Ccontainer-search{
     display: grid;
     place-items: center;
-    width: 47.15%;
+    width: 53%;
     height: 36px;
     margin: 0px 8px;
 }
@@ -114,6 +115,7 @@ body{
     color: white;
     font-weight: bold;    
     font-size: 0.875rem;
+    height: 100%;
 }
 
 .btnnavbar:hover{
@@ -122,6 +124,68 @@ body{
 
 .btnnavbar:active{
     background: #484848;
+}
+
+
+#dropdown-navbar-menu{
+    position: absolute;
+    width: 260px;
+    height: auto;  
+    background: #121212; /*#121212 ACA ES PARA VER EL CONTENEDOR DE DROPDOWN MENU*/
+    display: none;
+    margin: 4px 0px 0px;
+    padding: 8px 0px;
+    border-radius: 4px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    opacity: 0; 
+    transform: scale(0.4); 
+    transform-origin: top left; 
+    transition: opacity 0.1s ease, transform 0.1s ease; 
+}
+
+#dropdown-navbar-menu.show {
+    display: flex;
+    opacity: 1; 
+    transform: scale(1);
+}
+
+.dropdown-btn-option{
+    height: 48px;
+    padding: 0px 16px;
+    cursor: pointer;
+    background: #121212;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.dropdown-btn-option:hover{
+    background: #252525;
+}
+
+.dropdown-btn-option:active{
+    background: #484848;
+}
+
+.svg-btndropdown path, 
+.svg-btndropdown .circle-svg-questionsbtn,
+.svg-btndropdown .svg-questioningpoint {
+    transition: fill 0.3s ease, stroke 0.3s ease; /* Transiciones de color */
+}
+
+.dropdown-btn-option:hover .svg-btndropdown path{
+    stroke: #FFFFFF;
+}
+
+.dropdown-btn-option:hover .svg-btndropdown .circle-svg-questionsbtn{
+    stroke: #FFFFFF;
+}
+
+.dropdown-btn-option:hover .svg-btndropdown .svg-questioningpoint{
+    fill: #FFFFFF;
 }
 
 /*================================= ESTA PARTE CORRESPONDE A LO QUE ESTA DEBAJO DEL NAVBAR =================================*/
@@ -248,7 +312,7 @@ body{
     font-size: 1.25rem;
 }
 
-/*AHORA EMPIEZA LA SEXXIÓN DE PRÓXIMAMENTE*/
+/*AHORA EMPIEZA LA SECCIÓN DE PRÓXIMAMENTE*/
 .container-coming-soon {
     width: 33%;
     margin: 0px 8px 0px 4px;
@@ -311,6 +375,10 @@ body{
     margin: 0px 0px 7px;
 }
 
+.cs-p-t-player #SVGRepo_iconCarrier{
+    transition: fill 0.1s ease;
+}
+
 .cs-p-t-player:hover #SVGRepo_iconCarrier{
     fill:#16B3D6;
 }
@@ -345,7 +413,7 @@ body{
     stroke: #16B3D6;
 }
 
-/* DESDE ACÁ INICIA LA PARTE DE ESTRENOS */
+/* DESDE ACÁ INICIA LA PARTE DE DESTACADO HOY */
 
 .movie-list-premiere-containerprincipal{
     display: flex;
@@ -353,8 +421,7 @@ body{
 }
 
 .movie-list-premiere-container{
-    height: 425.98px;
-    background: red;
+    height: fit-content; /*MEDIDA TEMPORAL DEL CONTAINER DESTACADO HOY red*/
     padding: 24px 0px;
     width: 100%;
     display: flex;
@@ -374,4 +441,132 @@ body{
     display: flex;
     flex-direction: row;
     gap: 24px;
+}
+
+.premiere-c{
+    cursor: pointer;
+    display: flex; 
+    align-items: end; 
+    flex-direction: row; 
+    position: absolute; 
+    width:  100%;
+    height: 100%; 
+    top: 0; 
+    background-image: 
+        linear-gradient(to bottom, 
+        transparent 10%, 
+        rgba(0,0,0,0.5) 
+        80%, rgba(0,0,0,0.8) 95%);
+}
+
+.premiere-c:hover {
+    cursor: pointer;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); 
+    z-index: 1; 
+}
+
+
+.premiere-c .svg path, .premiere-c .svgf{
+    transition: stroke 0.3s ease, fill 0.3s ease;
+}
+.premiere-c:hover .svg path{
+    stroke: #16B3D6; 
+}
+
+.premiere-c:hover .svgf{
+    fill: #16B3D6; 
+}
+
+.premiere-title{
+    font-size: 1rem;
+    color: white;
+    width: 394.64px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0px 0px;
+}
+
+.p-tunderline:hover{
+    text-decoration: underline;
+}
+
+/* HASTA ACÁ LA PARTE DEL DESTACADO HOY */
+
+/* ACÁ INICIA LA PARTE DE EN CARTELERA */
+.onpremiere{
+    height: 64px;
+    width: 100%;
+    padding: 0px 0px 12px;
+    color: #16B3D6;
+    font-weight: bold;
+    font-size: 2rem;
+    display: flex;
+    align-items: end;
+}
+
+.onpremiere-h1{
+    width: 100%; margin: 24px 0px 0px; padding: 0px 24px; height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.explore-more-premieremovies-container{
+    display: flex; flex-direction: row;
+    align-items: center;
+    padding: 0px 16px;
+    margin: 0px 0px 0px 8px;
+    border-radius: 4px;
+    height: 100%;
+    cursor: pointer;
+}
+.explore-more-premieremovies-container:hover {
+    background: #070C13;
+}
+.explore-more-premieremovies-container:active {
+    background: #142236;
+}
+
+.mlps-container{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 100%;
+    
+    height: 512px; /*MEDIDA TEMPORAL CAMBIAR A FIT CONTENT O AUTO LUEGO*/
+    margin: 0px 0px 8px;
+    padding: 24px 0px;
+}
+
+.mlps-header{
+    display: flex;
+    flex-direction: row;
+    background: black; /*Cambiar Fondo transparent o eliminar*/
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: fit-content;
+    position: relative;
+    margin: 0px 0px 16px;
+    padding: 0px 24px;
+    color: white;
+}
+
+.mlps-h-b{
+    content: "";
+    width: 4px;
+    border-radius: 4px;
+    height: 100%;
+    background: #16B3D6;    
+    position: absolute;
+    padding: 0px 0px 0px -12px;
+}
+
+.movie-premier-slider{
+    background: blue;
+    width: 100%;
 }

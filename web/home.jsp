@@ -11,13 +11,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bienvenido a Mundo Cine</title>
         <link href="resources/css/home.css" rel="stylesheet" type="text/css"/>
+            <script>
+                 window.addEventListener('click', function(event) {
+                    var dropdownMenu = document.getElementById("dropdown-navbar-menu");
+                    var toggleButton = document.getElementById("togglebtn-dropdown");
+                    var toggleButton2 = document.getElementById("togglebtn-dropdown2");
+                    var toggleButtonIcon = document.getElementById("togglebtn-icon");
+                    // Verificar si el clic no fue dentro del menú ni en el botón de alternancia
+                    if (!dropdownMenu.contains(event.target) && event.target !== toggleButton && event.target !== toggleButton2 && event.target !== toggleButtonIcon) {
+                        dropdownMenu.classList.remove("show"); // Ocultar el menú
+                    }
+                });
+                
+                function toggleMenu() {
+                    var dropdownMenu = document.getElementById("dropdown-navbar-menu");
+                    dropdownMenu.classList.toggle("show"); // Agregar o eliminar la clase "show"
+                }
+            </script>
     </head>
+    
     <body>
         <!-- ESTO ES EL NAVBAR -->
         <div class="navbar">
             <div class="container-options">
                 <div class="options">
-                    <div style="display: grid; place-items: center; width: 64px; height: 36px">                        
+                    <diV style="display: flex; flex-direction: row; gap: 24px; width: 90%;">
+                    <div style="display: grid; place-items: center; width: fit-content; height: 36px">                        
                     <button style='display: flex; place-items: center; background: #16B3D6;
                             font-weight: bold; font-size: 1.5rem; border: transparent;
                             border-radius: 4px; cursor: pointer; height: 32px; padding: 0px 10px;
@@ -25,21 +44,42 @@
                         MundoCine
                     </button>                        
                     </div>
-                    <button class="btnnavbar">
-                        <div style="display: flex; flex-direction: row; place-items: center; padding: 0px 16px">
-                            <img src="resources/img/home-navbar/menu-bars.svg" 
-                                 alt="Barras de búsqueda" width="24" height="24"
-                                 style="display: grid; place-items: center; padding-right: 10px">
-                            Menú
+                    
+                    <div id="btn-menu-container">
+                        <button id="togglebtn-dropdown" class="btnnavbar" onclick="toggleMenu()">
+                            <div id="togglebtn-dropdown2" style="display: flex; flex-direction: row; place-items: center; padding: 0px 16px; cursor: pointer;">
+                                <img id="togglebtn-icon" src="resources/img/home-navbar/menu-bars.svg" 
+                                     alt="menu barras icono" width="24" height="24"
+                                     style="display: grid; place-items: center; padding-right: 10px">
+                                Menú
+                            </div>
+                        </button> 
+                        <div id="dropdown-navbar-menu"> 
+                            <div class="dropdown-btn-option">
+                                <svg class="svg-btndropdown" style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_15_3)"> <rect width="24" height="24" fill="transparent"></rect> <path d="M9 21H4C3.44772 21 3 20.5523 3 20V12.4142C3 12.149 3.10536 11.8946 3.29289 11.7071L11.2929 3.70711C11.6834 3.31658 12.3166 3.31658 12.7071 3.70711L20.7071 11.7071C20.8946 11.8946 21 12.149 21 12.4142V20C21 20.5523 20.5523 21 20 21H15M9 21H15M9 21V15C9 14.4477 9.44772 14 10 14H14C14.5523 14 15 14.4477 15 15V21" stroke="#B3B3B3" stroke-linejoin="round"></path> </g> <defs> <clipPath id="clip0_15_3"> <rect width="24" height="24" fill=" "></rect> </clipPath> </defs> </g></svg>
+                                <div style="height: fit-content">Inicio</div>
+                            </div>
+                            
+                            <!-- style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px" -->
+                            <!-- #B3B3B3 -->
+                            
+                            <div class="dropdown-btn-option">
+                                <svg class="svg-btndropdown" style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px;" viewBox=0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle class="circle-svg-questionsbtn" cx="12" cy="12" r="10" stroke="#B3B3B3" stroke-width="1.5"></circle> <path d="M10.125 8.875C10.125 7.83947 10.9645 7 12 7C13.0355 7 13.875 7.83947 13.875 8.875C13.875 9.56245 13.505 10.1635 12.9534 10.4899C12.478 10.7711 12 11.1977 12 11.75V13" stroke="#B3B3B3" stroke-width="1.5" stroke-linecap="round"></path> <circle class="svg-questioningpoint" cx="12" cy="16" r="1" fill="#B3B3B3"></circle> </g></svg>
+                                <div style="height: fit-content">Preguntas Frecuentes</div>
+                            </div>
+                            
                         </div>
-                    </button>
+                    </div>
+                                      
+                    
+                        
                     <div class="Ccontainer-search">
                         <div class="search">
                             <button class="buttonall" style="display: flex; flex-direction: row; place-items: center">                                
                                 Todo
                                 <img src="resources/img/home-navbar/triangledown-btn.svg" 
                                  alt="Triangle Down Pointer" width="8" height="8"
-                                 style="display: grid; place-items: center; padding-left: 10px">
+                                 style="display: grid; place-items: center; padding-left: 10px;">
                             </button>
                             <input type="text" class="searcher" placeholder="Buscar en MundoCine">
                             <button class="buttonlens">                                
@@ -47,9 +87,12 @@
                             </button>
                         </div>
                     </div>
-                    <button class="btnnavbar" style="padding: 0px 16px">
-                        Iniciar sesión
-                    </button>
+                    
+                    </diV>
+                   
+                        <button class="btnnavbar" style="padding: 0px 16px; cursor: pointer; height: 36px">
+                            Iniciar sesión
+                        </button>
                 </div>
             </div>
         </div>
@@ -184,22 +227,94 @@
 
             <div class="movie-list-premiere-container">
                 <div style="display: flex; flex-direction: row;"> 
-                    <div style="width: 67%; margin-right: 10px; background: blue">
+                    <div style="width: 67%; margin-right: 10px;"> <!-- BG-BLACK ACA -->
                         <div class="premiere-h1">Destacado Hoy</div>
                         <div class="premiere-list">
-                            <div style="background: black; height: 221.98px; width: 394.64px;">
-                                
+                            <div style="display: flex; flex-direction: column">
+                                <div style="height: 221.98px; width: 394.64px; position: relative;">
+                                    <img style="height: 100%; width: 100%; object-fit: cover;" src="resources/img/home/destacado1.webp" alt="destacados hoy"/>
+                                    <div style="color: white;position: absolute; padding: 15px;z-index: 1; bottom: 0; left: 20px;" ></div>
+                                    <div class="premiere-c">
+                                        <svg class="svg" style="pointer-events: none;z-index: 1; width: 32px; height: 32px; padding: 10px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 6L21 6.00078M8 12L21 12.0008M8 18L21 18.0007M3 6.5H4V5.5H3V6.5ZM3 12.5H4V11.5H3V12.5ZM3 18.5H4V17.5H3V18.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                                        <div style="z-index: 1; color: white; padding: 0px 0px 17px 0px; font-size: 0.875rem">Lista</div>
+                                        <div></div>
+                                    </div>
+                                </div>                            
+                                <div class="premiere-title" >
+                                    <div class="p-tunderline" style="cursor: pointer">
+                                        Descubre las películas imprescindibles de abril
+                                    </div>
+                                    <div class="p-tunderline" style="margin: 8px 0px 0px; color: #4C8DE7; cursor: pointer">
+                                        Mira nuestras elecciones
+                                    </div>
+                                </div>
                             </div>
-                            <div style="background: white; height: 221.98px; width: 394.64px;">
-                                
+                            <div style="display: flex; flex-direction: column">
+                                <div style="height: 221.98px; width: 394.64px; position: relative;">
+                                    <img style="height: 100%; width: 100%; object-fit: cover;" src="resources/img/home/destacado2.jpeg" alt="destacados hoy"/>
+                                    <div style="color: white;position: absolute; padding: 15px;z-index: 1; bottom: 0; left: 20px;" ></div>
+                                    <div class="premiere-c">
+                                        <svg class="svgf" style="pointer-events: none;z-index: 1; width: 32px; height: 32px; padding: 10px" fill="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M20 2H8c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM8 16V4h12l.002 12H8z"></path><path d="M4 8H2v12c0 1.103.897 2 2 2h12v-2H4V8z"></path><path d="m12 12-1-1-2 3h10l-4-6z"></path></g></svg>
+                                        <div style="z-index: 1; color: white; padding: 0px 0px 17px 0px; font-size: 0.875rem">Imágenes</div>
+                                    </div>
+                                </div>
+                                <div class="premiere-title" >
+                                    <div class="p-tunderline" style="cursor: pointer">
+                                        Explora las imágenes más bellas del mundo del cine.
+                                    </div>
+                                    <div class="p-tunderline" style="margin: 8px 0px 0px; color: #4C8DE7; cursor: pointer">
+                                        Mira la galeria
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    
+                        </div>       
+                    </div>                    
                     <div style="width: 33%"></div>
                 </div>
             </div> 
-               
+            
+           
+            <div class="onpremiere">
+                <div class="onpremiere-h1">
+                    <div>En cartelera</div>
+                    <div class="explore-more-premieremovies-container">
+                        <div style="font-size: 0.875rem; color:#4C8DE7; ">Ver todas las películas en cartelera</div>
+                        <svg id="explore-more-premieremovies-svg" style="height: 24px; width: 24px; margin: 0px -6px 0px 0px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                      <g id="SVGRepo_iconCarrier">
+                                        <path d="M10 16L14 12L10 8" stroke="#4C8DE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </g>   
+                    </div>                
+                </div>
+            </div>
+            
+            <!-- ACÁ INICIA LA PARTE DEL SLIDER -->
+                
+            <div class="mlps-container">   
+                
+                <div class="mlps-header">
+                    <div class="mlps-h-b"></div>
+                    <div style="padding: 0px 0px 0px 12px">Que ver en el cine ahora</div>
+                </div>
+            
+                <div class="movie-premier-slider">
+                    
+                    <div class="movies-premier">
+                        <div class="mps-img">
+                            <img src="" alt="">                            
+                        </div>                 
+                        <div class="mps-information">
+                            <div class="mps-calification"></div>
+                            <div class="mps-title"></div>
+                            <div class="mps-btn-schedules"></div>
+                            <div class="mps-btn-teaser"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>  
             <!-- ====================================================================== -->          
                        
             </div>
