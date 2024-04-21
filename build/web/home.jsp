@@ -46,7 +46,7 @@
                     </div>
                     
                     <div id="btn-menu-container">
-                        <button id="togglebtn-dropdown" class="btnnavbar" onclick="toggleMenu()">
+                        <button id="togglebtn-dropdown" class="btnnavbar btn-color" onclick="toggleMenu()">
                             <div id="togglebtn-dropdown2" style="display: flex; flex-direction: row; place-items: center; padding: 0px 16px; cursor: pointer;">
                                 <img id="togglebtn-icon" src="resources/img/home-navbar/menu-bars.svg" 
                                      alt="menu barras icono" width="24" height="24"
@@ -55,7 +55,7 @@
                             </div>
                         </button> 
                         <div id="dropdown-navbar-menu"> 
-                            <div class="dropdown-btn-option">
+                            <div class="dropdown-btn-option btn-color">
                                 <svg class="svg-btndropdown" style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_15_3)"> <rect width="24" height="24" fill="transparent"></rect> <path d="M9 21H4C3.44772 21 3 20.5523 3 20V12.4142C3 12.149 3.10536 11.8946 3.29289 11.7071L11.2929 3.70711C11.6834 3.31658 12.3166 3.31658 12.7071 3.70711L20.7071 11.7071C20.8946 11.8946 21 12.149 21 12.4142V20C21 20.5523 20.5523 21 20 21H15M9 21H15M9 21V15C9 14.4477 9.44772 14 10 14H14C14.5523 14 15 14.4477 15 15V21" stroke="#B3B3B3" stroke-linejoin="round"></path> </g> <defs> <clipPath id="clip0_15_3"> <rect width="24" height="24" fill=" "></rect> </clipPath> </defs> </g></svg>
                                 <div style="height: fit-content">Inicio</div>
                             </div>
@@ -63,7 +63,7 @@
                             <!-- style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px" -->
                             <!-- #B3B3B3 -->
                             
-                            <div class="dropdown-btn-option">
+                            <div class="dropdown-btn-option btn-color">
                                 <svg class="svg-btndropdown" style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px;" viewBox=0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle class="circle-svg-questionsbtn" cx="12" cy="12" r="10" stroke="#B3B3B3" stroke-width="1.5"></circle> <path d="M10.125 8.875C10.125 7.83947 10.9645 7 12 7C13.0355 7 13.875 7.83947 13.875 8.875C13.875 9.56245 13.505 10.1635 12.9534 10.4899C12.478 10.7711 12 11.1977 12 11.75V13" stroke="#B3B3B3" stroke-width="1.5" stroke-linecap="round"></path> <circle class="svg-questioningpoint" cx="12" cy="16" r="1" fill="#B3B3B3"></circle> </g></svg>
                                 <div style="height: fit-content">Preguntas Frecuentes</div>
                             </div>
@@ -90,7 +90,7 @@
                     
                     </diV>
                    
-                        <button class="btnnavbar" style="padding: 0px 16px; cursor: pointer; height: 36px">
+                        <button class="btnnavbar btn-color" style="padding: 0px 16px; cursor: pointer; height: 36px">
                             Iniciar sesión
                         </button>
                 </div>
@@ -234,7 +234,7 @@
                                 <div style="height: 221.98px; width: 394.64px; position: relative;">
                                     <img style="height: 100%; width: 100%; object-fit: cover;" src="resources/img/home/destacado1.webp" alt="destacados hoy"/>
                                     <div style="color: white;position: absolute; padding: 15px;z-index: 1; bottom: 0; left: 20px;" ></div>
-                                    <div class="premiere-c">
+                                    <div class="premiere-c bg-hover-semitransparent">
                                         <svg class="svg" style="pointer-events: none;z-index: 1; width: 32px; height: 32px; padding: 10px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 6L21 6.00078M8 12L21 12.0008M8 18L21 18.0007M3 6.5H4V5.5H3V6.5ZM3 12.5H4V11.5H3V12.5ZM3 18.5H4V17.5H3V18.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                                         <div style="z-index: 1; color: white; padding: 0px 0px 17px 0px; font-size: 0.875rem">Lista</div>
                                         <div></div>
@@ -253,7 +253,7 @@
                                 <div style="height: 221.98px; width: 394.64px; position: relative;">
                                     <img style="height: 100%; width: 100%; object-fit: cover;" src="resources/img/home/destacado2.jpeg" alt="destacados hoy"/>
                                     <div style="color: white;position: absolute; padding: 15px;z-index: 1; bottom: 0; left: 20px;" ></div>
-                                    <div class="premiere-c">
+                                    <div class="premiere-c bg-hover-semitransparent">
                                         <svg class="svgf" style="pointer-events: none;z-index: 1; width: 32px; height: 32px; padding: 10px" fill="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M20 2H8c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM8 16V4h12l.002 12H8z"></path><path d="M4 8H2v12c0 1.103.897 2 2 2h12v-2H4V8z"></path><path d="m12 12-1-1-2 3h10l-4-6z"></path></g></svg>
                                         <div style="z-index: 1; color: white; padding: 0px 0px 17px 0px; font-size: 0.875rem">Imágenes</div>
                                     </div>
