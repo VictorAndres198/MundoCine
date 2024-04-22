@@ -118,7 +118,7 @@ body{
 
 #dropdown-navbar-menu{
     position: absolute;
-    width: 280px;
+    width: 280px; /*CONSIDERAR LUEGO, DESPUES CAMBIAR A 260 PX*/
     height: auto;  
     background: #1F1F1F; /*#121212 ACA ES PARA VER EL CONTENEDOR DE DROPDOWN MENU*/
     display: none;
