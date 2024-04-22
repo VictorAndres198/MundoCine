@@ -40,6 +40,10 @@
                     // Redirigir a la página deseada
                     window.location.href = "suggestions.jsp";
                 }
+                function redirigirContactUs() {
+                    // Redirigir a la página deseada
+                    window.location.href = "contact-us.jsp";
+                }
             </script>
     </head>
     <body>     
@@ -80,7 +84,7 @@
                                 <div style="height: fit-content;pointer-events: none;">Preguntas Frecuentes</div>
                             </div>
                             
-                            <div class="dropdown-btn-option">
+                            <div class="dropdown-btn-option" onclick="redirigirContactUs()">
                                 <svg class="svg-contactus" style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px;pointer-events: none;" fill="#B3B3B3" version="1.1" id="XMLID_276_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="contact-us"> <g> <path d="M4,24v-5H0V0h23v19h-9.3L4,24z M2,17h4v3.7l7.3-3.7H21V2H2V17z"></path> </g> <g> <rect x="5" y="8" width="3" height="3"></rect> </g> <g> <rect x="10" y="8" width="3" height="3"></rect> </g> <g> <rect x="15" y="8" width="3" height="3"></rect> </g> </g> </g></svg>
                                 <div style="height: fit-content;pointer-events: none;">Contáctenos</div>
                             </div>

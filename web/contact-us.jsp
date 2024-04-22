@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Suggestions
-    Created on : 21 abr. 2024, 20:29:36
+    Document   : contact-us
+    Created on : 21 abr. 2024, 22:57:26
     Author     : Victor
 --%>
 
@@ -9,8 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sugerencias y Reclamaciones</title>
-        <link href="resources/css/suggestions.css" rel="stylesheet" type="text/css"/>
+        <title>JSP Page</title>
+        <link href="resources/css/contact-us.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/home.css" rel="stylesheet" type="text/css"/>
         <script>
                  window.addEventListener('click', function(event) {
@@ -28,6 +28,7 @@
                     var dropdownMenu = document.getElementById("dropdown-navbar-menu");
                     dropdownMenu.classList.toggle("show"); // Agregar o eliminar la clase "show"
                 }
+                
                 function redirigirHome() {
                     // Redirigir a la página deseada
                     window.location.href = "home.jsp";
@@ -44,11 +45,11 @@
                     // Redirigir a la página deseada
                     window.location.href = "contact-us.jsp";
                 }
-            </script>
+        </script>
     </head>
-    <body>     
-        <!-- ESTO ES EL NAVBAR -->
-        <div class="navbar">
+    <body>
+        
+         <div class="navbar">
             <div class="container-options">
                 <div class="options">
                     <diV style="display: flex; flex-direction: row; gap: 24px; width: 90%;">
@@ -72,8 +73,8 @@
                         </button> 
                         <div id="dropdown-navbar-menu"> 
                             <div class="dropdown-btn-option" onclick="redirigirHome()">
-                                <svg class="svg-btndropdown" style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px;pointer-events: none;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_15_3)"> <rect width="24" height="24" fill="transparent"></rect> <path d="M9 21H4C3.44772 21 3 20.5523 3 20V12.4142C3 12.149 3.10536 11.8946 3.29289 11.7071L11.2929 3.70711C11.6834 3.31658 12.3166 3.31658 12.7071 3.70711L20.7071 11.7071C20.8946 11.8946 21 12.149 21 12.4142V20C21 20.5523 20.5523 21 20 21H15M9 21H15M9 21V15C9 14.4477 9.44772 14 10 14H14C14.5523 14 15 14.4477 15 15V21" stroke="#B3B3B3" stroke-linejoin="round"></path> </g> <defs> <clipPath id="clip0_15_3"> <rect width="24" height="24" fill=" "></rect> </clipPath> </defs> </g></svg>
-                                <div style="height: fit-content;pointer-events: none;t">Inicio</div>
+                                <svg class="svg-btndropdown" style="pointer-events: none; height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_15_3)"> <rect width="24" height="24" fill="transparent"></rect> <path d="M9 21H4C3.44772 21 3 20.5523 3 20V12.4142C3 12.149 3.10536 11.8946 3.29289 11.7071L11.2929 3.70711C11.6834 3.31658 12.3166 3.31658 12.7071 3.70711L20.7071 11.7071C20.8946 11.8946 21 12.149 21 12.4142V20C21 20.5523 20.5523 21 20 21H15M9 21H15M9 21V15C9 14.4477 9.44772 14 10 14H14C14.5523 14 15 14.4477 15 15V21" stroke="#B3B3B3" stroke-linejoin="round"></path> </g> <defs> <clipPath id="clip0_15_3"> <rect width="24" height="24" fill=" "></rect> </clipPath> </defs> </g></svg>
+                                <div style="height: fit-content;pointer-events: none;">Inicio</div>
                             </div>
                             
                             <!-- style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px" -->
@@ -96,7 +97,9 @@
                             
                         </div>
                     </div>
-                               
+                                      
+                    
+                        
                     <div class="Ccontainer-search">
                         <div class="search">
                             <button class="buttonall" style="display: flex; flex-direction: row; place-items: center">                                
@@ -120,69 +123,9 @@
                 </div>
             </div>
         </div>
-        <div class="onpremiere">
-            <div class="suggestions-container">
-                 
-                
-                <div class="onpremiere-h1">
-                    <div>Sugerencias</div>              
-                 </div>
-                <div class="mlps-header">
-                    <div class="mlps-h-b"></div>
-                    <div style="padding: 0px 0px 0px 12px">¡Nos encantaría escuchar tus sugerencias! ¿Tienes alguna idea para mejorar nuestro servicio? ¡Déjanos tus comentarios aquí!</div>
-                </div>
-                <div style="display: flex; place-content: center; margin: 50px 0px;">
-                    <div class="suggesion-form">
-                        <form action="/submit" method="post">
-                            <label for="name">Nombre:</label><br>
-                            <input class="up" type="text" id="name" name="name" required><br>
-                            <label for="email">Correo electrónico:</label><br>
-                            <input class="up" type="email" id="email" name="email" required><br>
-                            <label for="suggestion">Sugerencia:</label><br>
-                            <textarea class="up" id="suggestion" name="suggestion" rows="4" cols="42" required></textarea><br>
-                            <input class="upbtn btn-color" type="submit" value="Enviar">
-                        </form>
-                    </div>
-                </div>
-                
-                
-                <div class="onpremiere-h1">
-                    <div>Reclamos</div>              
-                 </div>
-                <div class="mlps-header">
-                    <div class="mlps-h-b"></div>
-                    <div style="padding: 0px 0px 0px 12px">¿Tienes algún problema o inconveniente que necesitamos conocer? ¡Queremos escucharte! Por favor, comparte tus preocupaciones con nosotros aquí.</div>
-                </div>
-                <div style="display: flex; place-content: center; margin: 50px 0px;">
-                    <div class="suggesion-form">
-                        <form action="/submit" method="post" enctype="multipart/form-data">
-                            <label for="name">Nombre:</label><br>
-                            <input class="up" type="text" id="name" name="name" required><br>
-                            <label for="email">Correo electrónico:</label><br>
-                            <input class="up" type="email" id="email" name="email" required><br>
-                            <label for="complaintType">Tipo de reclamo:</label><br>
-                            <select class="up" id="complaintType" name="complaintType" required>
-                                <option value="" disabled selected>Selecciona un tipo de reclamo</option>
-                                <option value="Producto defectuoso">Función cancelada</option>
-                                <option value="Servicio al cliente">Servicio al cliente</option>
-                                <option value="Facturación errónea">Cobro indebido</option>
-                                <option value="Otros">Otros</option>
-                            </select><br>
-                            <label for="complaint">Reclamo:</label><br>
-                            <textarea class="up" id="complaint" name="complaint" rows="4" cols="42" required></textarea><br>
-                            <label for="file">Adjuntar archivo:</label><br>
-                            <input class="up" type="file" id="file" name="file"><br>
-                            <input class="upbtn btn-color" type="submit" value="Enviar">
-                        </form>
-                    </div>
-                </div>
-                
-                
-                
-            </div>        
-        </div> 
         
+        <div style="background: white; max-width: 1280px; margin: auto">
+            asds
+        </div>
     </body>
 </html>
-
-
