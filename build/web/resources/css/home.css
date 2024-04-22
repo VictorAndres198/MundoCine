@@ -118,7 +118,7 @@ body{
 
 #dropdown-navbar-menu{
     position: absolute;
-    width: 260px;
+    width: 280px;
     height: auto;  
     background: #1F1F1F; /*#121212 ACA ES PARA VER EL CONTENEDOR DE DROPDOWN MENU*/
     display: none;
@@ -176,7 +176,7 @@ body{
 
 .svg-btndropdown path, 
 .svg-btndropdown .circle-svg-questionsbtn,
-.svg-btndropdown .svg-questioningpoint {
+.svg-btndropdown .svg-questioningpoint,.svg-contactus,.svg-suggest path{
     transition: fill 0.3s ease, stroke 0.3s ease; /* Transiciones de color */
 }
 
@@ -192,6 +192,14 @@ body{
     fill: #FFFFFF;
 }
 
+.dropdown-btn-option:hover .svg-contactus{
+     fill: #FFFFFF;
+}
+
+.dropdown-btn-option:hover .svg-suggest path{
+     fill: #FFFFFF;
+     stroke: #FFFFFF;
+}
 /*================================= ESTA PARTE CORRESPONDE A LO QUE ESTA DEBAJO DEL NAVBAR =================================*/
 /*ACA SE CAMBIA EL FONDO DEL CONTENEDOR PRINCIPAL*/
 .home-container{
