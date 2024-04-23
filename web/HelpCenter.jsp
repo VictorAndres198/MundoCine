@@ -12,6 +12,7 @@
         <title>Preguntas Frecuentes</title>
         <link href="resources/css/hp.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/home.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/piePagina.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://images-na.ssl-images-amazon.com/images/I/11EIQ5IGqaL._RC|01e5ncglxyL.css,01lF2n-pPaL.css,41kFcbwbhrL.css,31+Z83i6adL.css,01IWMurvs8L.css,013z33uKh2L.css,01qPl4hxayL.css,01g+NWirX6L.css,41EWOOlBJ9L.css,11TIuySqr6L.css,01ElnPiDxWL.css,11fJbvhE5HL.css,01Dm5eKVxwL.css,01IdKcBuAdL.css,01y-XAlI+2L.css,21yimAg6YwL.css,01oDR3IULNL.css,51PjmZTX66L.css,01XPHJk60-L.css,01S0vRENeAL.css,21IbH+SoKSL.css,11MrAKjcAKL.css,21fecG8pUzL.css,11a5wZbuKrL.css,01CFUgsA-YL.css,31pHA2U5D9L.css,116t+WD27UL.css,11gKCCKQV+L.css,11061HxnEvL.css,11oHt2HYxnL.css,01j2JE3j7aL.css,11JQtnL-6eL.css,21zZ8mQ5z6L.css,11thAWu6MZL.css,0114z6bAEoL.css,21uwtfqr5aL.css,11QyqG8yiqL.css,11K24eOJg4L.css,11F2+OBzLyL.css,01890+Vwk8L.css,01g+cOYAZgL.css,01cbS3UK11L.css,21F85am0yFL.css,01giMEP+djL.css_.css?AUIClients/AmazonUI#us.not-trident">
         <link rel="stylesheet" href="https://images-na.ssl-images-amazon.com/images/I/01LPI7Ef+XL.css?AUIClients/IMDbProSiteHappyOrNotAssets">
         <script>
@@ -114,8 +115,8 @@
         <div class="hp-container">
             <div id="search_area" class="a-section a-padding-extra-large a-text-center">
             <div class="a-section content_container">
-                <a class="a-spacing-base a-spacing-top-extra-large a-link-normal aok-block header_imdb_logo" href=""></a>
-                <p class="a-spacing-base a-size-extra-large">
+                <!-- comment <a class="a-spacing-base a-spacing-top-extra-large a-link-normal aok-block header_imdb_logo" href=""></a>-->
+                <p class="a-spacing-base a-size-extra-large" style="margin-top: 120px;">
                     Preguntas Frecuentes
                 </p>
             </div>
@@ -601,6 +602,63 @@
                 
                 
                 
+            </div>
+            <div style="max-width: 1280px;
+                 width: 100%; margin: auto;">
+                        <footer style="margin-top: 150px;">
+                    <div class="PieDePagina">
+                        <div class="contacto">
+                            <h3 style="padding-bottom: 10px;"><a href="contactenos_ubiquenos.php">CONTÁCTENOS</a></h3>
+                            <hr style="margin-bottom: 10px;"></hr>
+                            <h4 style="padding-bottom: 10px;"><strong><h4>Redes Sociales</h4></strong></h4>
+                            <hr style="margin-bottom: 10px;"></hr> 
+                            <h4 style="padding-bottom: 10px;"><p><strong>Teléfono</strong></p></h4>
+                            <ul style="padding-bottom: 10px;">
+                                <li style="color:white;">(+51) 964593567</li>
+                            </ul>
+                            <hr style="margin-bottom: 10px;"> </hr>
+                            <h4 style="padding-bottom: 10px;"><p><strong>Horarios</strong></p></h4>
+                            <ul style="padding-bottom: 10px;"><li style="color:white;">Lun-Sab: 8:00 am - 00:00 pm</li></ul>
+                            <hr style="margin-bottom: 10px;"></hr> 
+                            <h4 style="padding-bottom: 10px;"><p><strong>Email</strong></p></h4>
+                            <ul style="padding-bottom: 10px;">  
+                                <li style="color:white;">MundoCine@gmail.com</li
+                            </ul>
+
+                        </div>
+
+                        <div class="enlaces-importantes">
+                            <h3 style="padding-bottom: 10px;">ENLACES IMPORTANTES</h3>
+                            <hr style="margin-bottom: 10px;"> </hr>
+                            <h4 style="padding-bottom: 10px;"><a href="FrmReclamos.php">Libro de reclamaciones</a></h4>
+                            <hr style="margin-bottom: 10px;"></hr>
+                            <h4 style="padding-bottom: 10px;"><a href="FrmSugerencias.php">Sugerencias</a></h4>
+                        </div> 
+
+                        <div class="Informacion">
+                            <h3 style="padding-bottom: 10px;"><strong>INFORMACIÓN</strong></h3>
+                            <hr style="margin-bottom: 10px;"></hr>
+                            <h4 style="padding-bottom: 10px;"><strong><a href="Nosotros.php">Nosotros</a></strong></h4>
+                             <hr style="margin-bottom: 10px;"></hr>  
+                             <h4 style="padding-bottom: 10px;"><strong><a href="contactenos_ubiquenos.php">Nuestros Cines</a></strong></h4>
+                            <ul style="padding-bottom: 10px;">
+                            <li style="padding-bottom: 10px;color:white;">Plaza Norte</li>
+                            <li style="padding-bottom: 10px;color:white;">Mega Plaza</li>
+                            <li style="padding-bottom: 10px;color:white;">Real Plaza</li>
+                            <li style="padding-bottom: 10px;color:white;">Mall Aventura Santa Anita</li>
+                            <li style="padding-bottom: 10px;color:white;">Plaza Sur</li>
+                            <li style="padding-bottom: 10px;color:white;">Jockey Plaza</li>
+                            </ul>
+                            <hr style="margin-bottom: 10px;"></hr>
+                            <h4 style="padding-bottom: 10px;"><strong><a href="#">¿Cómo adquirir entradas?</a></strong></h4>
+                            <hr style="margin-bottom: 10px;"></hr>
+
+                            <h4 style="padding-bottom: 10px;"><strong><a hhref="HelpCenter.jsp">Preguntas frecuentes</a></strong></h4>
+                        </div>
+                    </div>
+
+                </footer>
+            
             </div>
             <script>
         var lastAnswer = null; 
