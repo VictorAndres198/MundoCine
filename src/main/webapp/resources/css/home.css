@@ -580,5 +580,25 @@ body{
 
 .movie-premier-slider{
     background: blue;
+    width: 1232px;
+    height: fit-content;
+    padding: 0px 24px;
+    overflow: hidden;
+}
+
+.movies-premier{
+    background-color: red;
+    width: 185.3px;
+    height: 466.63px;
+    display: flex;
+}
+
+.mps-img{
+    height: 274.23px;
     width: 100%;
+    background: #16B3D6;
+}
+
+.mps-information{
+    
 }

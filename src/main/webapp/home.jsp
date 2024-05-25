@@ -320,34 +320,36 @@
                     </div>
                 </div>
 
-                <!-- ACÁ INICIA LA PARTE DEL SLIDER -->
-                <!--    
-                <div class="mlps-container">   
-                    
-                    <div class="mlps-header">
-                        <div class="mlps-h-b"></div>
-                        <div style="padding: 0px 0px 0px 12px">Que ver en el cine ahora</div>
-                    </div>
+            <!-- ACÁ INICIA LA PARTE DEL SLIDER -->   
+            <div class="mlps-container">   
                 
-                    <div class="movie-premier-slider">
+                <div class="mlps-header">
+                    <div class="mlps-h-b"></div>
+                    <div style="padding: 0px 0px 0px 12px">Que ver en el cine ahora</div>
+                </div>
+                            
+                <div class="movie-premier-slider">
+                    
+                    <div class="movies-premier">
                         
-                        <div class="movies-premier">
-                            <div class="mps-img">
-                                <img src="" alt="">                            
-                            </div>                 
-                            <div class="mps-information">
-                                <div class="mps-calification"></div>
-                                <div class="mps-title"></div>
-                                <div class="mps-btn-schedules"></div>
-                                <div class="mps-btn-teaser"></div>
-                            </div>
+                        <div class="mps-img">                           
+                            <img src="" alt="">                            
+                        </div>
+                        
+                        <div class="mps-information">
+                            <div class="mps-calification"></div>
+                            <div class="mps-title"></div>
+                            <div class="mps-btn-schedules"></div>
+                            <div class="mps-btn-teaser"></div>
                         </div>
                         
                     </div>
                     
-                </div>  
-                -->
-                <!-- ====================================================================== -->          
+                </div>
+                
+            </div>  
+            
+<!-- ====================================================================== -->          
 
 
                 <footer style="margin-top: 150px;">
