@@ -12,8 +12,10 @@
         <servlet-name>cntSuggestions</servlet-name>
         <servlet-class>ServLets.cntSuggestions</servlet-class>
     </servlet>
-    
-    
+    <servlet>
+        <servlet-name>cntCustomer</servlet-name>
+        <servlet-class>ServLets.cntCustomer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvHome</servlet-name>
         <url-pattern>/SvHome</url-pattern>
@@ -26,8 +28,10 @@
         <servlet-name>cntSuggestions</servlet-name>
         <url-pattern>/cntSuggestions</url-pattern>
     </servlet-mapping>
-    
-    
+    <servlet-mapping>
+        <servlet-name>cntCustomer</servlet-name>
+        <url-pattern>/cntCustomer</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

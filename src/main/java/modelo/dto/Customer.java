@@ -19,11 +19,11 @@ public class Customer {
     private String usuario;
     private String correo;
     private String fechanacimiento;
-    private String contraseña;
+    private String contrasena;
     public Customer() {
     }
 
-    public Customer(int codcliente, String nombre, String apepaterno, String apematerno, String dni, String usuario, String correo, String fechanacimiento, String contraseña) {
+    public Customer(int codcliente, String nombre, String apepaterno, String apematerno, String dni, String usuario, String correo, String fechanacimiento, String contrasena) {
         this.codcliente = codcliente;
         this.nombre = nombre;
         this.apepaterno = apepaterno;
@@ -32,7 +32,7 @@ public class Customer {
         this.usuario = usuario;
         this.correo = correo;
         this.fechanacimiento = fechanacimiento;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
     }
 
     public int getCodcliente() {
@@ -100,11 +100,11 @@ public class Customer {
     }
 
     public String getContraseña() {
-        return contraseña;
+        return contrasena;
     }
 
     public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+        this.contrasena = contraseña;
     }
 
     

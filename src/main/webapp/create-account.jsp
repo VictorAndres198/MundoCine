@@ -15,49 +15,49 @@
     <body>
         <div class="create-account">
             <h1>Crear cuenta</h1>
-            <form action="/submit" method="post" enctype="multipart/form-data">
+            <form action="<%= request.getContextPath()%>/cntCustomer" method="post" class="formulario" id="formCreateAccount">
                 <div class="">
                     <div class="create-account-box">
-                        <input type="text" placeholder="Nombre" data-test="create-account-first-name" value="" class="">
+                        <input type="text" placeholder="Nombre" data-test="create-account-first-name" name="nombre" >
                     </div>
                 </div>
                 <div class="account-last-name">
                     <div class="lastname-p">
                         <div class="create-account-box">
-                            <input type="text" placeholder="Apellido Paterno" data-test="create-account-last-name1" value="">
+                            <input type="text" placeholder="Apellido Paterno" data-test="create-account-last-name1" name="apepaterno">
                         </div>
                     </div>
                     <div class="">
                         <div class="create-account-box">
-                            <input type="text" placeholder="Apellido Materno" data-test="create-account-last-name2" value="">
+                            <input type="text" placeholder="Apellido Materno" data-test="create-account-last-name2" name="apematerno">
                         </div>
                     </div>
                 </div>
                 <div class="account-dni-birthdate">
                     <div class="account-dni-p">
                         <div class="create-account-box">
-                            <input type="dni" placeholder="DNI" data-test="create-account-dni" value="" class="">
+                            <input type="dni" placeholder="DNI" data-test="create-account-dni" name="dni">
                         </div>
                     </div>
                     <div class="">
                         <div class="create-account-box">
-                            <input type="birthdate" placeholder="Fecha de Nacimiento" data-test="create-account-birthdate" value="" class="">
+                            <input type="birthdate" placeholder="Fecha de Nacimiento" data-test="create-account-birthdate" name="fechanacimiento">
                         </div>
                     </div>
                 </div>
                 <div class="">
                     <div class="create-account-box">
-                        <input type="username" placeholder="Nombre de Usuario" data-test="create-account-username" value="" class="">
+                        <input type="username" placeholder="Nombre de Usuario" data-test="create-account-username" name="usuario">
                     </div>
                 </div>
                 <div class="">
                     <div class="create-account-box">
-                        <input type="email" placeholder="Correo electrónico" data-test="create-account-email" value="" class="">
+                        <input type="email" placeholder="Correo electrónico" data-test="create-account-email" name="correo">
                     </div>
                 </div>
                 <div class="">
                     <div class="create-account-box">
-                        <input type="password" placeholder="Crear contraseña" data-test="create-account-password" value="" class="">
+                        <input type="password" placeholder="Crear contraseña" data-test="create-account-password" name="contrasena">
                     </div>
                 </div>
                 <%--<div class="">
@@ -65,13 +65,8 @@
                         <input type="password" placeholder="Vuelve a escribir la contraseña" data-test="create-account-confirm-password" value="">
                     </div>
                 </div>--%>
-                <div class="cIjT9Gx1d4IQhUpiYmlI AQ08MoIFljm5p70XuskF">
-
-                </div>
-                <input class="upbtn btn-color" type="submit" value="Enviar">
-                <button class="btn-creat-account" data-test="create-account-create-button" type="submit">
-                    <span>Crear cuenta</span>
-                </button>
+                
+                <input class="btn-creat-account" data-test="create-account-create-button" type="submit"  style="border-radius: 5px;" value="Crear Cuenta" name="accion">
             </form>
             <footer>
                 <a href="login.jsp">
