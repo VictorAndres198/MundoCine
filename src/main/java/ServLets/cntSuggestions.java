@@ -17,22 +17,23 @@ public class cntSuggestions extends HttpServlet {
             if (accion.equals("Enviar")) {
                 String asunto = request.getParameter("asunto");
                 String sugerencia = request.getParameter("sugerencia");
-                
+
                 request.setAttribute("asunto", asunto);
                 request.setAttribute("sugerencia", sugerencia);
-                
+
                 // Limpiar los atributos antes de reenviar
                 request.setAttribute("asunto", "");
                 request.setAttribute("sugerencia", "");
-                
+
                 Suggestions s = new Suggestions();
                 s.setAsunto(asunto);
                 s.setContenido(sugerencia);
                 String resp = new SuggestionsDAO().insert(s);
-                
+
             }
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
