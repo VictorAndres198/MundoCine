@@ -34,7 +34,6 @@
                 changeYear: true, // Permitir cambio de año
                 yearRange: "-100:+0", // Rango de años permitidos
                 maxDate: "0", // Fecha máxima seleccionable (hoy)
-                // Otros ajustes y opciones que desees
             });
         });
     </script>
