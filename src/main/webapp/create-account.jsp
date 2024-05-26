@@ -15,7 +15,7 @@
     <body>
         <div class="create-account">
             <h1>Crear cuenta</h1>
-            <form>
+            <form action="/submit" method="post" enctype="multipart/form-data">
                 <div class="">
                     <div class="create-account-box">
                         <input type="text" placeholder="Nombre" data-test="create-account-first-name" value="" class="">
@@ -60,14 +60,15 @@
                         <input type="password" placeholder="Crear contraseña" data-test="create-account-password" value="" class="">
                     </div>
                 </div>
-                <div class="">
+                <%--<div class="">
                     <div class="create-account-box">
                         <input type="password" placeholder="Vuelve a escribir la contraseña" data-test="create-account-confirm-password" value="">
                     </div>
-                </div>
+                </div>--%>
                 <div class="cIjT9Gx1d4IQhUpiYmlI AQ08MoIFljm5p70XuskF">
 
                 </div>
+                <input class="upbtn btn-color" type="submit" value="Enviar">
                 <button class="btn-creat-account" data-test="create-account-create-button" type="submit">
                     <span>Crear cuenta</span>
                 </button>
