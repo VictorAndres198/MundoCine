@@ -1,1 +1,8 @@
+modelo\dao\SuggestionsDAO.class
+modelo\dto\Contact.class
+modelo\dao\ContactDAO.class
 ServLets\SvHome.class
+modelo\dto\Suggestions.class
+conexion\conectaBD.class
+ServLets\cntSuggestions.class
+ServLets\cntContact.class

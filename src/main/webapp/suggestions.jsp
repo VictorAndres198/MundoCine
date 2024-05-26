@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sugerencias y Reclamaciones</title>
+        <title>Sugerencias</title>
         <link href="resources/css/suggestions.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/home.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/piePagina.css" rel="stylesheet" type="text/css"/>
@@ -122,133 +122,103 @@
             </div>
         </div>
         
-        
-        <div class="onpremiere">
-            <div class="suggestions-container">
-                 
-                
-                <div class="onpremiere-h1">
-                    <div>Sugerencias</div>              
-                 </div>
-                <div class="mlps-header">
-                    <div class="mlps-h-b"></div>
-                    <div style="padding: 0px 0px 0px 12px">¡Nos encantaría escuchar tus sugerencias! ¿Tienes alguna idea para mejorar nuestro servicio? ¡Déjanos tus comentarios aquí!</div>
-                </div>
-                <div style="display: flex; place-content: center; margin: 50px 0px;">
-                    <div class="suggesion-form">
-                        <form action="/submit" method="post">
-                            <label for="name">Nombre:</label><br>
-                            <input class="up" type="text" id="name" name="name" required><br>
-                            <label for="email">Correo electrónico:</label><br>
-                            <input class="up" type="email" id="email" name="email" required><br>
-                            <label for="suggestion">Sugerencia:</label><br>
-                            <textarea class="up" id="suggestion" name="suggestion" rows="4" cols="42" required></textarea><br>
-                            <input class="upbtn btn-color" type="submit" value="Enviar">
-                        </form>
-                    </div>
-                </div>
-                
-                
-                <div class="onpremiere-h1">
-                    <div>Reclamos</div>              
-                 </div>
-                <div class="mlps-header">
-                    <div class="mlps-h-b"></div>
-                    <div style="padding: 0px 0px 0px 12px">¿Tienes algún problema o inconveniente que necesitamos conocer? ¡Queremos escucharte! Por favor, comparte tus preocupaciones con nosotros aquí.</div>
-                </div>
-                <div style="display: flex; place-content: center; margin: 50px 0px;">
-                    <div class="suggesion-form">
-                        <form action="/submit" method="post" enctype="multipart/form-data">
-                            <label for="name">Nombre:</label><br>
-                            <input class="up" type="text" id="name" name="name" required><br>
-                            <label for="email">Correo electrónico:</label><br>
-                            <input class="up" type="email" id="email" name="email" required><br>
-                            <label for="complaintType">Tipo de reclamo:</label><br>
-                            <select class="up" id="complaintType" name="complaintType" required>
-                                <option value="" disabled selected>Selecciona un tipo de reclamo</option>
-                                <option value="Producto defectuoso">Función cancelada</option>
-                                <option value="Servicio al cliente">Servicio al cliente</option>
-                                <option value="Facturación errónea">Cobro indebido</option>
-                                <option value="Otros">Otros</option>
-                            </select><br>
-                            <label for="complaint">Reclamo:</label><br>
-                            <textarea class="up" id="complaint" name="complaint" rows="4" cols="42" required></textarea><br>
-                            <label for="file">Adjuntar archivo:</label><br>
-                            <input class="up" type="file" id="file" name="file"><br>
-                            <input class="upbtn btn-color" type="submit" value="Enviar">
-                        </form>
-                    </div>
-                </div>
-                
-                
-                
-                            <footer style="margin-top: 150px;">
-                    <div class="PieDePagina">
-                        <div class="contacto">
-                            <h3 style="padding-bottom: 10px;"><a href="contactenos_ubiquenos.php">CONTÁCTENOS</a></h3>
-                            <hr style="margin-bottom: 10px;"></hr>
-                            <h4 style="padding-bottom: 10px;"><strong><h4>Redes Sociales</h4></strong></h4>
-                            <hr style="margin-bottom: 10px;"></hr> 
-                            <h4 style="padding-bottom: 10px;"><p><strong>Teléfono</strong></p></h4>
-                            <ul style="padding-bottom: 10px;">
-                                <li>(+51) 964593567</li>
-                            </ul>
-                            <hr style="margin-bottom: 10px;"> </hr>
-                            <h4 style="padding-bottom: 10px;"><p><strong>Horarios</strong></p></h4>
-                            <ul style="padding-bottom: 10px;"><li>Lun-Sab: 8:00 am - 00:00 pm</li></ul>
-                            <hr style="margin-bottom: 10px;"></hr> 
-                            <h4 style="padding-bottom: 10px;"><p><strong>Email</strong></p></h4>
-                            <ul style="padding-bottom: 10px;">  
-                                <li>MundoCine@gmail.com</li
-                            </ul>
-
+        <div class="suggestionsUs">
+            <div class="tittle">
+                <h1>Sugerencias</h1>
+            </div>
+            <div class="mlps-header" style="margin: 12px 0px 24px 0px">
+                <div class="mlps-h-b"></div>
+                <div style="padding: 0px 0px 0px 12px">¡Estamos aquí para escucharte! Déjanos tu sugerencia.</div>
+            </div>
+            <!-- Formulario -->
+            <div class="boxForm">
+                <div class="suggestions form">
+                    <h3>Envíanos tu sugerencia.</h3>
+                    <form action="<%= request.getContextPath()%>/cntSuggestions" method="post" class="formulario" id="formSugerencias">
+                        <div class ="form">
+                            <div class="row50">
+                                <div class="inputForm">
+                                    <span>Nombre Completo</span>
+                                    <input type="text" name="nombre" id="nombre"
+                                           placeholder="Carla Soto">
+                                    <span>Correo Electrónico</span>
+                                    <input type="text" name="correo" id="correo"
+                                           placeholder="carlas@gmail.com">
+                                    <span>Asunto</span>
+                                    <input type="text" name="asunto" id="asunto"
+                                           placeholder="Mejora de ofertas..." value="${asunto}">
+                                </div>
+                                <div class="row100">
+                                    <div class="inputForm">
+                                        <span>Sugerencia</span>
+                                        <textarea type="text" name="sugerencia" id="sugerencia"
+                                                  placeholder="Escriba su sugerencia aquí..." value="${sugerencia}">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                    <div class="row100">
+                                    <div class="inputForm">
+                                        <input type="submit"  style="border-radius: 5px;" value="Enviar" name="accion">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="enlaces-importantes">
-                            <h3 style="padding-bottom: 10px;">ENLACES IMPORTANTES</h3>
-                            <hr style="margin-bottom: 10px;"> </hr>
-                            <h4 style="padding-bottom: 10px;"><a href="FrmReclamos.php">Libro de reclamaciones</a></h4>
-                            <hr style="margin-bottom: 10px;"></hr>
-                            <h4 style="padding-bottom: 10px;"><a href="FrmSugerencias.php">Sugerencias</a></h4>
-                        </div> 
-
-                        <div class="Informacion">
-                            <h3 style="padding-bottom: 10px;"><strong>INFORMACIÓN</strong></h3>
-                            <hr style="margin-bottom: 10px;"></hr>
-                            <h4 style="padding-bottom: 10px;"><strong><a href="Nosotros.php">Nosotros</a></strong></h4>
-                             <hr style="margin-bottom: 10px;"></hr>  
-                             <h4 style="padding-bottom: 10px;"><strong><a href="contactenos_ubiquenos.php">Nuestros Cines</a></strong></h4>
-                            <ul style="padding-bottom: 10px;">
-                            <li style="padding-bottom: 10px;">Plaza Norte</li>
-                            <li style="padding-bottom: 10px;">Mega Plaza</li>
-                            <li style="padding-bottom: 10px;">Real Plaza</li>
-                            <li style="padding-bottom: 10px;">Mall Aventura Santa Anita</li>
-                            <li style="padding-bottom: 10px;">Plaza Sur</li>
-                            <li style="padding-bottom: 10px;">Jockey Plaza</li>
-                            </ul>
-                            <hr style="margin-bottom: 10px;"></hr>
-                            <h4 style="padding-bottom: 10px;"><strong><a href="#">¿Cómo adquirir entradas?</a></strong></h4>
-                            <hr style="margin-bottom: 10px;"></hr>
-
-                            <h4 style="padding-bottom: 10px;"><strong><a hhref="HelpCenter.jsp">Preguntas frecuentes</a></strong></h4>
-                        </div>
-                    </div>
-
-                </footer>
+                    </form>
+                </div>
+            </div>
+        </div>
                 
-                
-                
-            </div>    
-            
-        </div> 
-        
-        
-        
-        
-        
-        
-        
+        <footer style="margin-top: 150px;">
+            <div class="PieDePagina">
+                <div class="contacto">
+                    <h3 style="padding-bottom: 10px;"><a href="contactenos_ubiquenos.php">CONTÁCTENOS</a></h3>
+                    <hr style="margin-bottom: 10px;"></hr>
+                    <h4 style="padding-bottom: 10px;"><strong><h4>Redes Sociales</h4></strong></h4>
+                    <hr style="margin-bottom: 10px;"></hr> 
+                    <h4 style="padding-bottom: 10px;"><p><strong>Teléfono</strong></p></h4>
+                    <ul style="padding-bottom: 10px;">
+                        <li>(+51) 964593567</li>
+                    </ul>
+                    <hr style="margin-bottom: 10px;"> </hr>
+                    <h4 style="padding-bottom: 10px;"><p><strong>Horarios</strong></p></h4>
+                    <ul style="padding-bottom: 10px;"><li>Lun-Sab: 8:00 am - 00:00 pm</li></ul>
+                    <hr style="margin-bottom: 10px;"></hr> 
+                    <h4 style="padding-bottom: 10px;"><p><strong>Email</strong></p></h4>
+                    <ul style="padding-bottom: 10px;">  
+                        <li>MundoCine@gmail.com</li
+                    </ul>
+
+                </div>
+
+                <div class="enlaces-importantes">
+                    <h3 style="padding-bottom: 10px;">ENLACES IMPORTANTES</h3>
+                    <hr style="margin-bottom: 10px;"> </hr>
+                    <h4 style="padding-bottom: 10px;"><a href="FrmReclamos.php">Libro de reclamaciones</a></h4>
+                    <hr style="margin-bottom: 10px;"></hr>
+                    <h4 style="padding-bottom: 10px;"><a href="FrmSugerencias.php">Sugerencias</a></h4>
+                </div> 
+
+                <div class="Informacion">
+                    <h3 style="padding-bottom: 10px;"><strong>INFORMACIÓN</strong></h3>
+                    <hr style="margin-bottom: 10px;"></hr>
+                    <h4 style="padding-bottom: 10px;"><strong><a href="Nosotros.php">Nosotros</a></strong></h4>
+                    <hr style="margin-bottom: 10px;"></hr>  
+                    <h4 style="padding-bottom: 10px;"><strong><a href="contactenos_ubiquenos.php">Nuestros Cines</a></strong></h4>
+                    <ul style="padding-bottom: 10px;">
+                        <li style="padding-bottom: 10px;">Plaza Norte</li>
+                        <li style="padding-bottom: 10px;">Mega Plaza</li>
+                        <li style="padding-bottom: 10px;">Real Plaza</li>
+                        <li style="padding-bottom: 10px;">Mall Aventura Santa Anita</li>
+                        <li style="padding-bottom: 10px;">Plaza Sur</li>
+                        <li style="padding-bottom: 10px;">Jockey Plaza</li>
+                    </ul>
+                    <hr style="margin-bottom: 10px;"></hr>
+                    <h4 style="padding-bottom: 10px;"><strong><a href="#">¿Cómo adquirir entradas?</a></strong></h4>
+                    <hr style="margin-bottom: 10px;"></hr>
+
+                    <h4 style="padding-bottom: 10px;"><strong><a hhref="HelpCenter.jsp">Preguntas frecuentes</a></strong></h4>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
-
-

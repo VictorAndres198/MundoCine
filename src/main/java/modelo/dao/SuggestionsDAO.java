@@ -26,20 +26,19 @@ public class SuggestionsDAO {
         String resp = "";
         PreparedStatement ps;
         ResultSet rs;
-        String cadSQL = "INSERT INTO sugerencias (nombre, correo, asunto, sugerencia) VALUES(?,?,?,?) ";
+        String cadSQL = "INSERT INTO sugerencias (CodCliente, Asunto, Contenido) VALUES(1,?,?) ";
         
         try {
             ps = cnx.prepareStatement(cadSQL);
-            ps.setString(1, s.getNombre());
-            ps.setString(2, s.getCorreo());
-            ps.setString(3, s.getAsunto());
-            ps.setString(4, s.getSugerencia());
+            ps.setString(1, s.getAsunto());
+            ps.setString(2, s.getContenido());
             ps.executeUpdate();
         } catch (SQLException ex) {
             resp = ex.getMessage();
         }
         return resp;
     }
+    
     public Suggestions get(int idx) {
         Suggestions s = null;
         PreparedStatement ps;
@@ -52,10 +51,8 @@ public class SuggestionsDAO {
             if (rs.next()){
                 s = new Suggestions();
                 s.setIdsugerencia(rs.getInt("idsugerencia"));
-                s.setNombre(rs.getString("nombre"));
-                s.setCorreo(rs.getString("correo"));
                 s.setAsunto(rs.getString("asunto"));
-                s.setSugerencia(rs.getString("sugerencia"));
+                s.setContenido(rs.getString("sugerencia"));
                 
             }
         } catch (SQLException ex) {

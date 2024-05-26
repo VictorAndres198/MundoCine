@@ -4,10 +4,30 @@
         <servlet-name>SvHome</servlet-name>
         <servlet-class>ServLets.SvHome</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cntContact</servlet-name>
+        <servlet-class>ServLets.cntContact</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cntSuggestions</servlet-name>
+        <servlet-class>ServLets.cntSuggestions</servlet-class>
+    </servlet>
+    
+    
     <servlet-mapping>
         <servlet-name>SvHome</servlet-name>
         <url-pattern>/SvHome</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntContact</servlet-name>
+        <url-pattern>/cntContact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntSuggestions</servlet-name>
+        <url-pattern>/cntSuggestions</url-pattern>
+    </servlet-mapping>
+    
+    
     <session-config>
         <session-timeout>
             30

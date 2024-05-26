@@ -1,66 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package ServLets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import modelo.dao.SuggestionsDAO;
 import modelo.dto.Suggestions;
 
-/**
- *
- * @author ztomz
- */
 public class cntSuggestions extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
         if (accion != null) {
             if (accion.equals("Enviar")) {
-                String nombre = request.getParameter("nombre");
-                String correo = request.getParameter("correo");
                 String asunto = request.getParameter("asunto");
                 String sugerencia = request.getParameter("sugerencia");
                 
-                request.setAttribute("nombre", nombre);
-                request.setAttribute("correo", correo);
                 request.setAttribute("asunto", asunto);
                 request.setAttribute("sugerencia", sugerencia);
                 
                 // Limpiar los atributos antes de reenviar
-                request.setAttribute("nombre", "");
-                request.setAttribute("correo", "");
                 request.setAttribute("asunto", "");
                 request.setAttribute("sugerencia", "");
                 
                 Suggestions s = new Suggestions();
-                s.setNombre(nombre);
-                s.setCorreo(correo);
                 s.setAsunto(asunto);
-                s.setSugerencia(sugerencia);
+                s.setContenido(sugerencia);
                 String resp = new SuggestionsDAO().insert(s);
                 
-                request.getRequestDispatcher("./suggestions.jsp").forward(request, response);
             }
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -99,5 +71,4 @@ public class cntSuggestions extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

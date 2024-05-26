@@ -1,58 +1,125 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 21 abr. 2024, 20:31:09
-    Author     : Victor
-*/
-
-.suggestions-container{
-    max-width: 1280px;
-    width: 100%;
-    height: fit-content;
-    margin: auto;
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', 'Helvetica', Arial, sans-serif;    
 }
 
-.suggesion-form{
-    width: 540px;
-    background: #1F1F1F;
-    border-radius: 20px;
-    padding: 50px;
+.suggestionsUs {
     position: relative;
+    width: 85%;
+    padding: 40px 100px;
 }
 
-.suggestion-form-bg{
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-image: 
-        linear-gradient(
-            to bottom,
-            transparent 50%,
-            rgba(0,0,0,1) 80%,
-            rgba(0,0,0) 95%
-        );
+.suggestionsUs .tittle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
 }
 
-.up{
-    font-size: 1.5rem;
-    outline-style: none;
-    border-radius: 10px;
-    border-color: gray;
-    margin: 9px 0px;
-    padding: 5px 10px;
+.suggestionsUs .tittle h1 {
+    color: #16B3D6;
+    font-weight: 500;   
 }
 
-.upbtn{
-    font-size: 1.25rem;
+.suggestions {
     border-radius: 5px;
-    padding: 10px 35px;
-    margin-top: 25px;
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 5px 35px rgba(0,0,0,0.15);
+}
+
+.boxForm {
+    position: relative;
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggestions h3 {
+    color: #0e3959;
+    font-weight: 500;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+/*formulario*/
+.form {
+    width: 85%; /* Ajusta el ancho */
+    margin: 0 auto;
+}
+
+.form .row50 {
+    gap: 20px;
+}
+
+.inputForm {
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.form .row100 .inputForm {
+    width: 100%;
+}
+
+.inputForm span {
+    color: #18b7ff;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weigth:500;
+}
+
+.inputForm input {
+    padding: 10px;
+    font-size: 1.1em;
+    outline:none;
+    border: 1px solid #333;
+}
+
+.inputForm textarea {
+    padding: 10px;
+    font-size: 1.1em;
+    outline:none;
+    border: 1px solid #333;
+    resize: none;
+    min-height: 220px;
+    margin-bottom: 10px;
+}
+
+.inputForm input[type="submit"]{
+    background: #ff578b;
+    color: #fff;
     border: none;
+    font-size: 1.1em;
+    max-width: 120px;
+    font-weigth: 500;
+    cursor: pointer;
+    padding: 14px 15px;
+}
+
+.inputForm ::placeholder {
+    color: #999;
+}
+
+/*Responsive Design*/
+@media (max-width: 991px) {
+    body {
+        background: #03a9f5;
+    }
+ 
+    .suggestions {
+        padding: 20px;
+    }
+    
+    .form .row50 {
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+    }
+    .inputForm {
+        width: 100%;
+    }
 }
