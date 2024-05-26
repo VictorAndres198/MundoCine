@@ -40,7 +40,36 @@ public class CustomerDAO {
         }
         return resp;
     }
-    public Customer get(int idx) {
+    public Customer authenticate(String correo, String contrasena) {
+    Customer cst = null;
+    PreparedStatement ps;
+    ResultSet rs;
+    String sql = "SELECT * FROM cliente WHERE correo = ? AND contraseña = ?";
+
+    try {
+        ps = cnx.prepareStatement(sql);
+        ps.setString(1, correo);
+        ps.setString(2, contrasena);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            cst = new Customer();
+            cst.setCodcliente(rs.getInt("codcliente"));
+            cst.setNombre(rs.getString("nombres"));
+            cst.setApepaterno(rs.getString("apepaterno"));
+            cst.setApematerno(rs.getString("apematerno"));
+            cst.setDni(rs.getString("dni"));
+            cst.setFechanacimiento(rs.getString("fechanacimiento"));
+            cst.setUsuario(rs.getString("usuario"));
+            cst.setCorreo(rs.getString("correo"));
+            cst.setContraseña(rs.getString("contrasena"));
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+    return cst;
+}
+    /*public Customer get(int idx) {
         Customer cst = null;
         PreparedStatement ps;
         ResultSet rs;
@@ -64,5 +93,5 @@ public class CustomerDAO {
         } catch (SQLException ex) {
         }
         return cst;
-    }
+    }*/
 }

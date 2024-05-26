@@ -4,7 +4,14 @@
     Author     : Victor
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="modelo.dto.Customer" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    Customer customer = (Customer) session.getAttribute("customer");
+    String welcomeMessage = (customer != null) ? "Bienvenido " + customer.getUsuario() : "Iniciar sesión";
+    boolean isLoggedIn = (customer != null);
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -122,8 +129,14 @@
                     </diV>
 
                     <button class="btnnavbar btn-color" style="padding: 0px 16px; cursor: pointer; height: 36px">
-                        <a href="login.jsp">Iniciar sesión</a>
+                        <%= isLoggedIn ? welcomeMessage : "<a href='login.jsp'>" + welcomeMessage + "</a>"%>
                     </button>
+
+                    <% if (isLoggedIn) { %>
+                    <button class="btnnavbar btn-color" style="padding: 0px 16px; cursor: pointer; height: 36px">
+                        <a href="logout">Cerrar sesión</a>
+                    </button>
+                    <% }%>
                 </div>
             </div>
         </div>
@@ -320,36 +333,36 @@
                     </div>
                 </div>
 
-            <!-- ACÁ INICIA LA PARTE DEL SLIDER -->   
-            <div class="mlps-container">   
-                
-                <div class="mlps-header">
-                    <div class="mlps-h-b"></div>
-                    <div style="padding: 0px 0px 0px 12px">Que ver en el cine ahora</div>
-                </div>
-                            
-                <div class="movie-premier-slider">
-                    
-                    <div class="movies-premier">
-                        
-                        <div class="mps-img">                           
-                            <img src="" alt="">                            
-                        </div>
-                        
-                        <div class="mps-information">
-                            <div class="mps-calification"></div>
-                            <div class="mps-title"></div>
-                            <div class="mps-btn-schedules"></div>
-                            <div class="mps-btn-teaser"></div>
-                        </div>
-                        
+                <!-- ACÁ INICIA LA PARTE DEL SLIDER -->   
+                <div class="mlps-container">   
+
+                    <div class="mlps-header">
+                        <div class="mlps-h-b"></div>
+                        <div style="padding: 0px 0px 0px 12px">Que ver en el cine ahora</div>
                     </div>
-                    
-                </div>
-                
-            </div>  
-            
-<!-- ====================================================================== -->          
+
+                    <div class="movie-premier-slider">
+
+                        <div class="movies-premier">
+
+                            <div class="mps-img">                           
+                                <img src="" alt="">                            
+                            </div>
+
+                            <div class="mps-information">
+                                <div class="mps-calification"></div>
+                                <div class="mps-title"></div>
+                                <div class="mps-btn-schedules"></div>
+                                <div class="mps-btn-teaser"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>  
+
+                <!-- ====================================================================== -->          
 
 
                 <footer style="margin-top: 150px;">

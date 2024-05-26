@@ -16,6 +16,14 @@
         <servlet-name>cntCustomer</servlet-name>
         <servlet-class>ServLets.cntCustomer</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cntLogin</servlet-name>
+        <servlet-class>ServLets.cntLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cntLogout</servlet-name>
+        <servlet-class>ServLets.cntLogout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvHome</servlet-name>
         <url-pattern>/SvHome</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>cntCustomer</servlet-name>
         <url-pattern>/cntCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntLogin</servlet-name>
+        <url-pattern>/cntLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntLogout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
