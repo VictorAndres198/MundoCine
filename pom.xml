@@ -68,6 +68,14 @@
             <version>1.0</version>
             <scope>provided</scope>
         </dependency>
+        
+        <!-- Dependencia para Pruebas Unitarias con JUnit5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies> 
 
      <build>
@@ -85,6 +93,11 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>            
         </plugins>
     </build>
 </project>

@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.dto.Customer;
-import conexion.conectaBD;
+import conexion.ConectaBD;
 
 public class CustomerDAO {
     private Connection cnx;
 
     public CustomerDAO() {
-        cnx = new conectaBD().getConnection();
+        cnx = new ConectaBD().getConnection();
     }
     
     public boolean insert(Customer cst) {

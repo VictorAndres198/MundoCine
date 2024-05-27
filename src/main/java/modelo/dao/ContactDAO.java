@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.dto.Contact;
-import conexion.conectaBD;
+import conexion.ConectaBD;
 
 /**
  *
@@ -20,7 +20,7 @@ public class ContactDAO {
     private Connection cnx;
 
     public ContactDAO() {
-        cnx = new conectaBD().getConnection();
+        cnx = new ConectaBD().getConnection();
     }
     
     public String insert(Contact c) {

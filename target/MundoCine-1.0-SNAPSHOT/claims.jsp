@@ -35,7 +35,7 @@
     <body>     
         <!-- ESTO ES EL NAVBAR -->
         <jsp:include page="components/navbar.jsp"/>
-        
+
         <div class="onpremiere">
             <div class="suggestions-container">
                 <div class="onpremiere-h1">
@@ -48,17 +48,17 @@
                 <div style="display: flex; place-content: center; margin: 50px 0px;">
                     <div class="suggesion-form">
                         <form action ="<%= request.getContextPath()%>/cntClaims" method="post" class="formulario" id="formClaims">
-                            <label for="name">DNI:</label><br>
-                            <input class="up" type="text" id="ID" name="DNIreclamo" required><br>
+                            <label for="ID">DNI:</label><br>
+                            <input class="up" type="text" id="ID" name="ID" required pattern="\d{8}" title="El DNI debe contener 8 dígitos"><br>
                             <label for="name">Nombre:</label><br>
                             <input class="up" type="text" id="name" name="name" required><br>
-                            <label for="name">Fecha:</label><br>
+                            <label for="fecha_reclamo">Fecha:</label><br>
                             <input class="up" type="text" id="fecha_reclamo" name="fecha_reclamo" required><br>
                             <label for="email">Correo electrónico:</label><br>
                             <input class="up" type="email" id="email" name="email" required><br>
-                            <label for="suggestion">Asunto</label><br>
+                            <label for="Asunto">Asunto:</label><br>
                             <input class="up" type="text" id="Asunto" name="Asunto" required><br>
-                            <label for="suggestion">Reclamo</label><br>
+                            <label for="ContenidoReclamo">Reclamo:</label><br>
                             <textarea class="up" id="ContenidoReclamo" name="ContenidoReclamo" rows="4" cols="42" required></textarea><br>           
                             <input class="upbtn btn-color" type="submit" value="Enviar" name="accion">
                         </form>

@@ -5,6 +5,7 @@
 --%>
 <%@page import="java.util.List"%>
 <%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="modelo.dto.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="modelo.dto.Movie" %> <!-- Importa tu clase de modelo de película -->
 <!DOCTYPE html>

@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.dto.Suggestions;
-import conexion.conectaBD;
+import conexion.ConectaBD;
 
 /**
  *
@@ -19,7 +19,7 @@ public class SuggestionsDAO {
     private Connection cnx;
 
     public SuggestionsDAO() {
-        cnx = new conectaBD().getConnection();
+        cnx = new ConectaBD().getConnection();
     }
     
     public String insert(Suggestions s) {
