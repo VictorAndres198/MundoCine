@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.List;
 import modelo.dto.itemDulceria;
 import org.junit.jupiter.api.Test;
+import conexion.ConectaBD;
 
 
 public class Tests {
