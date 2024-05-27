@@ -5,14 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.dto.Claims;
-import conexion.conectaBD;
+import conexion.ConectaBD;
 
 public class ClaimsDAO {
 
     private Connection cnx;
 
     public ClaimsDAO() {
-        cnx = new conectaBD().getConnection();
+        cnx = new ConectaBD().getConnection();
     }
 
     public String insert(Claims c) {

@@ -49,6 +49,11 @@
                 // Redirigir a la página deseada
                 window.location.href = "claims.jsp";
             }           
+
+            function redirigirDulceria() {
+                // Redirigir a la página deseada
+                window.location.href = "/MundoCine/Dulceria";
+            }           
             
         </script>
     </head>
