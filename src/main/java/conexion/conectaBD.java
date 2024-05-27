@@ -14,7 +14,7 @@ public class conectaBD {
                 + "serverTimezone=UTC&autoReconnect=true";
 
         String user = "root";
-        String clave = "root";
+        String clave = "";
 
         String Driver = "com.mysql.cj.jdbc.Driver";
 

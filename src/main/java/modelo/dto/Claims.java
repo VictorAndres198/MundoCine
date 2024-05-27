@@ -16,10 +16,9 @@ public class Claims {
     private String asunto_reclamo;
     private String fecha_reclamo;
     private String contenido_reclamo;
-    public Claims(){
-    }
-
     
+    public Claims(){
+    }   
 
     public Claims(int id_reclamos, String nombre_cliente, String correo_reclamo, String dni_reclamo, String asunto_reclamo, String fecha_reclamo, String contenido_reclamo) {
         this.id_reclamos = id_reclamos;

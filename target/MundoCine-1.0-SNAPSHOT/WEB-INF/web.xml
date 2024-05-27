@@ -12,8 +12,22 @@
         <servlet-name>cntSuggestions</servlet-name>
         <servlet-class>ServLets.cntSuggestions</servlet-class>
     </servlet>
-    
-    
+    <servlet>
+        <servlet-name>cntCustomer</servlet-name>
+        <servlet-class>ServLets.cntCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cntLogin</servlet-name>
+        <servlet-class>ServLets.cntLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cntLogout</servlet-name>
+        <servlet-class>ServLets.cntLogout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cntClaims</servlet-name>
+        <servlet-class>ServLets.cntClaims</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvHome</servlet-name>
         <url-pattern>/SvHome</url-pattern>
@@ -26,8 +40,22 @@
         <servlet-name>cntSuggestions</servlet-name>
         <url-pattern>/cntSuggestions</url-pattern>
     </servlet-mapping>
-    
-    
+    <servlet-mapping>
+        <servlet-name>cntCustomer</servlet-name>
+        <url-pattern>/cntCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntLogin</servlet-name>
+        <url-pattern>/cntLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntLogout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntClaims</servlet-name>
+        <url-pattern>/cntClaims</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
