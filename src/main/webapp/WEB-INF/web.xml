@@ -24,6 +24,10 @@
         <servlet-name>cntLogout</servlet-name>
         <servlet-class>ServLets.cntLogout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cntClaims</servlet-name>
+        <servlet-class>ServLets.cntClaims</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvHome</servlet-name>
         <url-pattern>/SvHome</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>cntLogout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntClaims</servlet-name>
+        <url-pattern>/cntClaims</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

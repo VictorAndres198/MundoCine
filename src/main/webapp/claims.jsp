@@ -14,6 +14,22 @@
         <link href="resources/css/home.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/piePagina.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/claims.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- jQuery UI -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(function () {
+                $("#fecha_reclamo").datepicker({
+                    dateFormat: 'yy-mm-dd', // Formato de fecha
+                    changeMonth: true, // Permitir cambio de mes
+                    changeYear: true, // Permitir cambio de año
+                    yearRange: "-100:+0", // Rango de años permitidos
+                    maxDate: "0", // Fecha máxima seleccionable (hoy)
+                });
+            });
+        </script>
         <script>
             window.addEventListener('click', function (event) {
                 var dropdownMenu = document.getElementById("dropdown-navbar-menu");
@@ -127,7 +143,7 @@
         <div class="onpremiere">
             <div class="suggestions-container">
                 <div class="onpremiere-h1">
-                    <div>Sugerencias</div>              
+                    <div>Reclamos</div>              
                 </div>
                 <div class="mlps-header">
                     <div class="mlps-h-b"></div>
@@ -135,14 +151,20 @@
                 </div>
                 <div style="display: flex; place-content: center; margin: 50px 0px;">
                     <div class="suggesion-form">
-                        <form action="/submit" method="post">
+                        <form action ="<%= request.getContextPath()%>/cntClaims" method="post" class="formulario" id="formClaims">
+                            <label for="name">DNI:</label><br>
+                            <input class="up" type="text" id="ID" name="DNIreclamo" required><br>
                             <label for="name">Nombre:</label><br>
                             <input class="up" type="text" id="name" name="name" required><br>
+                            <label for="name">Fecha:</label><br>
+                            <input class="up" type="text" id="fecha_reclamo" name="fecha_reclamo" required><br>
                             <label for="email">Correo electrónico:</label><br>
                             <input class="up" type="email" id="email" name="email" required><br>
-                            <label for="suggestion">Sugerencia:</label><br>
-                            <textarea class="up" id="suggestion" name="suggestion" rows="4" cols="42" required></textarea><br>
-                            <input class="upbtn btn-color" type="submit" value="Enviar">
+                            <label for="suggestion">Asunto</label><br>
+                            <input class="up" type="text" id="Asunto" name="Asunto" required><br>
+                            <label for="suggestion">Reclamo</label><br>
+                            <textarea class="up" id="ContenidoReclamo" name="ContenidoReclamo" rows="4" cols="42" required></textarea><br>           
+                            <input class="upbtn btn-color" type="submit" value="Enviar" name="accion">
                         </form>
                     </div>
                 </div>
