@@ -355,9 +355,8 @@ body{
 .mlps-container{
     display: flex;
     flex-direction: column;
-    background: white;
+    background: black;
     width: 100%;
-    
     height: 512px; /*MEDIDA TEMPORAL CAMBIAR A FIT CONTENT O AUTO LUEGO*/
     margin: 0px 0px 8px;
     padding: 24px 0px;
@@ -387,18 +386,23 @@ body{
 }
 
 .movie-premier-slider{
-    background: blue;
+    background: black;
     width: 1232px;
     height: fit-content;
     padding: 0px 24px;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    gap: 24.1px;
 }
 
 .movies-premier{
-    background-color: red;
+    background-color: #1A1A1A;
     width: 185.3px;
     height: 466.63px;
     display: flex;
+    flex-direction: column;
+    border-radius: 5px;
 }
 
 .mps-img{
@@ -408,5 +412,101 @@ body{
 }
 
 .mps-information{
-    
+    margin: 6px 0px 0px 0px;
+}
+
+.rating-container{
+    display: flex;
+    place-items: center;
+    margin: 0px 8px 0px 0px;
+}
+
+.mps-calification{
+    padding: 0px 8px;
+    color: #FFFFFFB3;
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+    height: 36px;
+    margin: 0px 0px 4px;
+}
+
+.btn-calification{
+    color:#5799EF;
+    cursor: pointer;
+    padding: 8px 14px;
+    display: flex;    
+    place-items: center;
+    border-radius: 5px;
+}
+
+.btn-calification:hover .svg-btn-calification{
+    color: #FFFFFF;
+}
+
+.btn-calification:hover{
+    background: #2C2C2C;
+}
+
+.mps-title{
+    padding: 0px 8px;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.mps-title:hover{
+    text-decoration: underline;
+}
+
+.mps-btn-container{
+    padding: 12px 8px 0px;
+}
+
+.mps-btn-schedules{
+    background: #2C2C2C;
+    color: #5799EF;
+    padding: 10px 16px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    place-content: center;
+}
+
+.mps-btn-schedules:hover{
+    background: #30353C
+}
+
+.mps-btn-schedules:active{
+    background: #364458
+}
+
+.mps-btn-teaser{
+    padding: 8px 0px;
+    color: white;
+    display: flex;
+    place-content: center;
+}
+
+.mps-btn-teaser-btn{
+    padding: 10px 16px;
+    width: fit-content;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.mps-btn-teaser-btn:hover{
+    background: #2C2C2C;
+}
+
+.mps-btn-teaser-btn:active{
+    background: #4E4E4E;
 }

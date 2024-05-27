@@ -14,9 +14,10 @@ a{
     text-decoration: none;
 
 }
+/* BORRAR ESTO O MODIFICAR DESPUES
 a:hover{
     color: #16B3D6;
-}
+}*/
 li {
     margin: 5px 0;
     line-height: 1.2; 
@@ -223,29 +224,4 @@ body{
 .dropdown-btn-option:hover .svg-suggest path{
      fill: #FFFFFF;
      stroke: #FFFFFF;
-}
-
-
-/*Configuracion de los links*/
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-a{
-    color: #fff;
-    text-decoration: none;
-
-}
-a:hover{
-    color: #16B3D6;
-}
-li {
-    margin: 5px 0;
-    line-height: 1.2; 
-    font-size: 18px; 
-}
-hr {
-  border: none; /* Elimina el borde predeterminado */
-  height: 2px; /* Altura de la línea */
-  background-color: #4C8DE7; /* Color de la línea */
 }

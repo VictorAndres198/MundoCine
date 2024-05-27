@@ -1,10 +1,14 @@
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\conexion\conectaBD.java
+C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dao\ClaimsDAO.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dao\ContactDAO.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dao\CustomerDAO.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dao\SuggestionsDAO.java
+C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dto\Claims.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dto\Contact.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dto\Customer.java
+C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dto\Movie.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\modelo\dto\Suggestions.java
+C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\ServLets\cntClaims.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\ServLets\cntContact.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\ServLets\cntCustomer.java
 C:\Users\Victor\OneDrive\Escritorio\Ciclos\Ciclos\Ciclo 6-7 (9 cursos)\Desarrollo Web Integrado\MundoCine\src\main\java\ServLets\cntLogin.java
