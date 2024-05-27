@@ -22,7 +22,7 @@ public class cntLogout extends HttpServlet {
             session.invalidate();
         }
         // Redirigir a la página de inicio de sesión
-        response.sendRedirect("home.jsp");
+        response.sendRedirect("index.jsp");
     }
 
     @Override

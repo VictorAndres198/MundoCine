@@ -32,7 +32,7 @@ public class cntLogin extends HttpServlet {
             // Crear una sesión y redirigir a home.jsp
             HttpSession session = request.getSession();
             session.setAttribute("customer", customer);
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("index.jsp");
         } else {
             // Redirigir de nuevo a la página de login con un mensaje de error
             request.setAttribute("errorMessage", "Correo o contraseña incorrectos");

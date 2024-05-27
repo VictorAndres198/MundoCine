@@ -4,7 +4,7 @@
 <script src="components/navbarRedirect.js" type="text/javascript"></script>
 <%
     Customer customer = (Customer) session.getAttribute("customer");
-    String welcomeMessage = (customer != null) ? "Bienvenido " + customer.getUsuario() : "Iniciar sesi�n";
+    String welcomeMessage = (customer != null) ? "Bienvenido " + customer.getUsuario() : "Iniciar sesión";
     boolean isLoggedIn = (customer != null);
 %>
     <div class="navbar">
@@ -28,7 +28,7 @@
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
                                     <g id="SVGRepo_iconCarrier"> <path d="M4 7H20M4 12H20M4 17H20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
                                 </svg>
-                                Men�
+                                Menú
                             </div>
                         </button> 
                         <div id="dropdown-navbar-menu"> 
@@ -47,7 +47,7 @@
 
                             <div class="dropdown-btn-option" onclick="redirigirContactUs()">
                                 <svg class="svg-contactus" style="height: 24px; width: 24px; margin: 0px 12px 0px 0px;stroke-width:1.5px;pointer-events: none;" fill="#B3B3B3" version="1.1" id="XMLID_276_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="contact-us"> <g> <path d="M4,24v-5H0V0h23v19h-9.3L4,24z M2,17h4v3.7l7.3-3.7H21V2H2V17z"></path> </g> <g> <rect x="5" y="8" width="3" height="3"></rect> </g> <g> <rect x="10" y="8" width="3" height="3"></rect> </g> <g> <rect x="15" y="8" width="3" height="3"></rect> </g> </g> </g></svg>
-                                <div style="height: fit-content;pointer-events: none;">Cont�ctenos</div>
+                                <div style="height: fit-content;pointer-events: none;">Contáctenos</div>
                             </div>
 
                             <div class="dropdown-btn-option" onclick="redirigirSuggestions()">
@@ -104,17 +104,19 @@
                         </div>
                     </div>
 
-                </diV>
-
                 <button class="btnnavbar btn-color" style="padding: 0px 16px; cursor: pointer; height: 36px">
                     <%= isLoggedIn ? welcomeMessage : "<a href='login.jsp'>" + welcomeMessage + "</a>"%>
                 </button>
 
                 <% if (isLoggedIn) { %>
                 <button class="btnnavbar btn-color" style="padding: 0px 16px; cursor: pointer; height: 36px">
-                    <a href="logout">Cerrar sesi�n</a>
+                    <a href="logout">Cerrar sesión</a>
                 </button>
-                <% }%>
+                <% }%>       
+                            
+                </diV>
+
+                
             </div>
         </div>
     </div>
