@@ -11,6 +11,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Crear cuenta</title>
     <link href="resources/css/create-account.css" rel="stylesheet" type="text/css"/>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <style>
         .alert {
             padding: 15px;
@@ -21,6 +26,17 @@
             text-align: center;
         }
     </style>
+    <script>
+        $(function() {
+            $("#fecha_nacimiento").datepicker({
+                dateFormat: 'yy-mm-dd', // Formato de fecha
+                changeMonth: true, // Permitir cambio de mes
+                changeYear: true, // Permitir cambio de año
+                yearRange: "-100:+0", // Rango de años permitidos
+                maxDate: "0", // Fecha máxima seleccionable (hoy)
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="create-account">
@@ -57,7 +73,7 @@
                 </div>
                 <div class="">
                     <div class="create-account-box">
-                        <input type="birthdate" placeholder="Fecha de Nacimiento" data-test="create-account-birthdate" name="fechanacimiento">
+                        <input type="text" placeholder="Fecha de Nacimiento" data-test="create-account-birthdate" id="fecha_nacimiento" name="fechanacimiento">
                     </div>
                 </div>
             </div>
