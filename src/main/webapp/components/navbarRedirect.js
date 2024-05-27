@@ -15,7 +15,7 @@ function toggleMenu() {
 }
 function redirigirHome() {
     // Redirigir a la página deseada
-    window.location.href = "home.jsp";
+    window.location.href = "index.jsp";
 }
 function redirigirHelpCenter() {
     // Redirigir a la página deseada
