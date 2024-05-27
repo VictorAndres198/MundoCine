@@ -30,9 +30,9 @@ public class cntClaims extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String accion = request.getParameter("accion");
-            if(accion !=null){
-            if(accion.equals("Enviar")){
+        String accion = request.getParameter("accion");
+        if (accion != null) {
+            if (accion.equals("Enviar")) {
                 String nombre_cliente = request.getParameter("name");
                 String correo_reclamo = request.getParameter("email");
                 String dni_reclamo = request.getParameter("ID");
@@ -40,20 +40,19 @@ public class cntClaims extends HttpServlet {
                 String asunto_reclamo = request.getParameter("Asunto");
                 String contenido_reclamo = request.getParameter("ContenidoReclamo");
 
-                request.setAttribute("name",nombre_cliente);
-                request.setAttribute("email",correo_reclamo);
-                request.setAttribute("ID",dni_reclamo);
-                request.setAttribute("fecha_reclamo",fecha_reclamo);
-                request.setAttribute("Asunto",asunto_reclamo);
-                request.setAttribute("ContenidoReclamo",contenido_reclamo);
-
-                request.setAttribute("name","");
-                request.setAttribute("email","");
-                request.setAttribute("ID","");
-                request.setAttribute("fecha_reclamo","");
-                request.setAttribute("Asunto","");
-                request.setAttribute("ContenidoReclamo","");
-
+//                request.setAttribute("name",nombre_cliente);
+//                request.setAttribute("email",correo_reclamo);
+//                request.setAttribute("ID",dni_reclamo);
+//                request.setAttribute("fecha_reclamo",fecha_reclamo);
+//                request.setAttribute("Asunto",asunto_reclamo);
+//                request.setAttribute("ContenidoReclamo",contenido_reclamo);
+//
+//                request.setAttribute("name","");
+//                request.setAttribute("email","");
+//                request.setAttribute("ID","");
+//                request.setAttribute("fecha_reclamo","");
+//                request.setAttribute("Asunto","");
+//                request.setAttribute("ContenidoReclamo","");
                 Claims c = new Claims();
                 c.setNombre_cliente(nombre_cliente);
                 c.setCorreo_reclamo(correo_reclamo);
@@ -61,12 +60,15 @@ public class cntClaims extends HttpServlet {
                 c.setFecha_reclamo(fecha_reclamo);
                 c.setAsunto_reclamo(asunto_reclamo);
                 c.setContenido_reclamo(contenido_reclamo);
-                String resp = new ClaimsDAO().insert(c);
+
+                ClaimsDAO claimsDAO = new ClaimsDAO();
+                String resp = claimsDAO.insert(c);
+
+//                String resp = new ClaimsDAO().insert(c);
                 request.getRequestDispatcher("claims.jsp").forward(request, response);
-                }
             }
         }
-    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
