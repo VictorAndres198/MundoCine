@@ -25,7 +25,8 @@
     <body>     
         <!-- ESTO ES EL NAVBAR -->
         <jsp:include page="components/navbar.jsp"/>
-
+        <div style="display: flex;flex-direction: column; place-items: center">
+        <div class="suggestions-principal-container">
         <div class="suggestionsUs">
             <div class="tittle">
                 <h1>Sugerencias</h1>
@@ -71,7 +72,10 @@
                 </div>
             </div>
         </div>
+        
         <!-- ESTO ES EL FOOTER -->
         <jsp:include page="components/footer.jsp"/>
+        </div>
+        </div>
     </body>
 </html>

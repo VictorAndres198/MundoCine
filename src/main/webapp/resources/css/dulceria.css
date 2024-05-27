@@ -1,4 +1,13 @@
+.container-principal{
+    display: flex; 
+    flex-direction: column; 
+    width: 1280px; 
+    place-items: center;
+    margin: auto;
+}
+
 .Container{
     background: #fff;
+    width: 100%;
 }
 

@@ -14,6 +14,7 @@
     <body>
                 <!-- ESTO ES EL NAVBAR -->
         <jsp:include page="components/navbar.jsp"/>
+        <div class="container-principal">
         <div class="Container">
             <h1>Dulceria</h1>
 
@@ -41,6 +42,6 @@
         
         <jsp:include page="components/footer.jsp"/>
         
-        
+        </div>
     </body>
 </html>
