@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class conectaBD {
+public class ConectaBD {
+    
     public Connection getConnection() {
         Connection cnx = null;
 
@@ -14,7 +15,7 @@ public class conectaBD {
                 + "serverTimezone=UTC&autoReconnect=true";
 
         String user = "root";
-        String clave = "root";
+        String clave = "123123";
 
         String Driver = "com.mysql.cj.jdbc.Driver";
 
@@ -22,7 +23,7 @@ public class conectaBD {
             Class.forName(Driver);
             cnx = DriverManager.getConnection(url, user, clave);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(conectaBD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConectaBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cnx;
     }
