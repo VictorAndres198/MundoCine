@@ -15,33 +15,52 @@
                 <!-- ESTO ES EL NAVBAR -->
         <jsp:include page="components/navbar.jsp"/>
         <div class="container-principal">
-        <div class="Container">
-            <h1>Dulceria</h1>
-
-            <% 
-                List<itemDulceria> itemsDulceria = (List<itemDulceria>) request.getAttribute("itemsDulceria"); 
-                if (itemsDulceria != null) {
-                    for (itemDulceria item : itemsDulceria) {
-            %>
-            <div class="content">
-                <h3><%= item.getNombre() %></h3>
-                <span><%= item.getCategoria().getNombre() %></span>
-                <p><%= item.getDescripcion() %></p>
-                <span><%= item.getPrecio() %></span>
+        <div class="container">
+            <div class="container-title">
+                <h1>Dulceria</h1>
             </div>
+            <div class="container-info">
+                <span>Local</span>
+            </div>
+            <div class="container-item-type">
+                <span>Combos</span>
+                <span>Canchita</span>
+                <span>Bebidas</span>
+                <span>Golosinas</span>
+            </div>
+            <div class="container-items">
 
-            <% 
-                    } 
-                }
-            %>
+                <% 
+                    List<itemDulceria> itemsDulceria = (List<itemDulceria>) request.getAttribute("itemsDulceria"); 
+                    if (itemsDulceria != null) {
+                        for (itemDulceria item : itemsDulceria) {
+                %>
+                <div class="content">
+                    <div class="item-img"><img src="" alt="Contenido Img"></div>
+                    <h3><%= item.getNombre() %></h3>
+                    <span><%= item.getCategoria().getNombre() %></span>
+                    <p><%= item.getDescripcion() %></p>
+                    <span class="price"><%= item.getPrecio() %></span>
+                    <button class="amount-less" ><span>-</span></button>
+                    <span class="amount">0</span>
+                    <button class="amount-plus" ><span>+</span></button>
+                </div>
 
-            <form action="/MundoCine/CompraDulceria" method="POST">
-                <button type="submit">Enviar</button>
+                <% 
+                        } 
+                    }
+                %>
+
+            </div>
+            <form action="/MundoCine/CompraDulceria" method="GET">
+                
+                <button class="container-item-btn" type="submit">> Enviar</button>
             </form>
+                
         </div>
-        
         <jsp:include page="components/footer.jsp"/>
+    </div>
+        <script src="components/DulceriaItems.js" type="text/javascript"></script>
         
-        </div>
     </body>
 </html>

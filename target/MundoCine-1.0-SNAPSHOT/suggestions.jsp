@@ -74,7 +74,9 @@
         </div>
         
         <!-- ESTO ES EL FOOTER -->
-        <jsp:include page="components/footer.jsp"/>
+        <div style="width: 1280px;">
+            <jsp:include page="components/footer.jsp"/>
+        </div>
         </div>
         </div>
     </body>
