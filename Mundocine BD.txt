@@ -103,3 +103,45 @@ Cantidad INT NOT NULL,
 FOREIGN KEY (CodCompra) REFERENCES Compra(CodCompra),
 FOREIGN KEY (CodSnacks) REFERENCES Snacks(CodSnacks)
 );
+ALTER TABLE snacks DROP foreign key snacks_ibfk_1;
+ALTER TABLE detallecompra DROP foreign key detallecompra_ibfk_1;
+ALTER TABLE detallecompra DROP foreign key detallecompra_ibfk_2;
+DROP TABLE snacks;
+DROP TABLE detallecompra;
+
+
+CREATE TABLE ItemDulceria(
+CodItem INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CodCategoria INT NOT NULL,
+Nombre varchar(50) NOT NULL,
+Descripcion VARCHAR(70) NOT NULL,
+Precio DECIMAL(4,2) NOT NULL,
+Stock INT NOT NULL,
+FOREIGN KEY (CodCategoria) REFERENCES Categoria(CodCategoria)
+);
+
+CREATE TABLE DetalleCompra(
+CodDetalleCompra INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CodCompra INT NOT NULL,
+CodItemDulceria INT NOT NULL,
+Cantidad INT NOT NULL,
+Subtotal decimal(5,2),
+FOREIGN KEY (CodCompra) REFERENCES Compra(CodCompra),
+FOREIGN KEY (CodItemDulceria) REFERENCES ItemDulceria(CodItem)
+);
+
+ALTER TABLE Compra MODIFY COLUMN Hora time;
+ALTER TABLE Compra ADD COLUMN Total decimal(5,2);
+
+insert into categoria(Nombre) values ("Bebida");
+insert into categoria(Nombre) values ("Canchita");
+insert into categoria(Nombre) values ("Golosina");
+
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (2,'cancha grande','cancha tamaño grande',17.00,20);
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (2,'cancha mediana','cancha tamaño mediano',15.00,10);
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (2,'cancha gigante','cancha tamaño gigante',25.00,0);
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (3,'snicker','snack de chocolate',7.50,5);
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (1,'gaseosa','gaseosa Grande de 32 oz',15.00,3);
+
+SELECT * FROM mundocine.itemdulceria;
+SELECT * FROM mundocine.categoria;
