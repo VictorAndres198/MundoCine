@@ -13,11 +13,13 @@
     <body>
         <!-- ESTO ES EL NAVBAR -->
         <jsp:include page="components/navbar.jsp"/>
+        <div style="width: 1280px; margin: auto">
         <div class="Container">
             <h1>Compra Dulceria</h1>
         </div>
         
         
         <jsp:include page="components/footer.jsp"/>
+        </div>
     </body>
 </html>

@@ -22,14 +22,12 @@ public class SvHome extends HttpServlet {
             throws ServletException, IOException {
         // Simular una lista de películas
         List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("Arthur", "resources/img/home-proximamente/proximamente1.jpg", "8.5"));
-        movies.add(new Movie("Culpa tuya", "resources/img/home-proximamente/proximamente2.webp", "7.2"));
-        movies.add(new Movie("Arthur", "resources/img/home-proximamente/proximamente1.jpg", "8.5"));
-        movies.add(new Movie("Culpa tuya", "resources/img/home-proximamente/proximamente2.webp", "7.2"));
-        movies.add(new Movie("Arthur", "resources/img/home-proximamente/proximamente1.jpg", "8.5"));
-        movies.add(new Movie("Culpa tuya", "resources/img/home-proximamente/proximamente2.webp", "7.2"));        
-        movies.add(new Movie("Arthur", "resources/img/home-proximamente/proximamente1.jpg", "8.5"));
-        movies.add(new Movie("Culpa tuya", "resources/img/home-proximamente/proximamente2.webp", "7.2"));
+        movies.add(new Movie("Amigos Imaginarios", "resources/img/cartelera/AmigosImaginarios.jpg", "8.5"));
+        movies.add(new Movie("El Especialista", "resources/img/cartelera/ElEspecialista.jpg", "7.2"));
+        movies.add(new Movie("Furiosa", "resources/img/cartelera/Furiosa.jpg", "8.5"));
+        movies.add(new Movie("Garfield", "resources/img/cartelera/Garfield.jpg", "7.2"));
+        movies.add(new Movie("El reino del planeta de los simios", "resources/img/cartelera/PlanetaSimios.jpg", "8.5"));
+        movies.add(new Movie("Tarot", "resources/img/cartelera/Tarot.jpg", "7.2"));        
         // Añade más películas según sea necesario
 
         // Pasar la lista de películas al JSP

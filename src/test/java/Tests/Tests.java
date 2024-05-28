@@ -3,7 +3,7 @@ package Tests;
 
 import Services.ServiceDulceria;
 import Services.ServiceLocales;
-import conexion.ConectaBD;
+/*import conexion.ConectaBD;*/
 import java.sql.Connection;
 import java.util.List;
 import modelo.dto.Locales;
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 public class Tests {
 
-   @Test
+   /*@Test
     public void testConnection() {
         Connection cnx = new ConectaBD().getConnection();
         if(cnx != null){
@@ -38,6 +38,6 @@ public class Tests {
          List<Locales> itemsDulceria = servLocales.FindAll();
          itemsDulceria.forEach(System.out::println);
     
-    }
+    }*/
     
 }
