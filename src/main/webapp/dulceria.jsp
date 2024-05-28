@@ -19,7 +19,15 @@
                 <h1>Dulceria</h1>
             </div>
             <div class="container-info">
-                <span>Local</span>
+                <div class="info-title"><span>Local</span></div>
+                <div class="info-locals">
+                    <select>
+                        <<option value="value">textsssssssssssssssss</option>
+                        <<option value="value">text</option>
+                        <<option value="value">text</option>
+                    </select>
+                </div>
+                    
             </div>
             <div class="container-item-type">
                 <span>Combos</span>
@@ -28,33 +36,39 @@
                 <span>Golosinas</span>
             </div>
             <div class="container-items">
-
                 <% 
                     List<itemDulceria> itemsDulceria = (List<itemDulceria>) request.getAttribute("itemsDulceria"); 
                     if (itemsDulceria != null) {
                         for (itemDulceria item : itemsDulceria) {
+                        String itemCategory = item.getCategoria().getNombre().toLowerCase();
+                        String itemDulceria = item.getNombre();
+                        String imgPath= "resources/img/dulceria/"+itemCategory+"/"+itemDulceria+".jpg";
                 %>
                 <div class="content">
-                    <div class="item-img"><img src="" alt="Contenido Img"></div>
-                    <h3><%= item.getNombre() %></h3>
-                    <span><%= item.getCategoria().getNombre() %></span>
+                    <div class="item-img"><img src="<%= imgPath %>" alt="Contenido Img"></div>
+                    <h3><%= itemDulceria %></h3>
+                    <span><%= itemCategory %></span>
                     <p><%= item.getDescripcion() %></p>
                     <span class="price"><%= item.getPrecio() %></span>
-                    <button class="amount-less" ><span>-</span></button>
-                    <span class="amount">0</span>
-                    <button class="amount-plus" ><span>+</span></button>
+                    <div class="content-amount">
+                        <button class="amount-less" >-</button>
+                        <span class="amount">0</span>
+                        <button class="amount-plus" >+</button>
+                    </div>
                 </div>
+                        
 
                 <% 
                         } 
                     }
                 %>
-
+            
             </div>
-            <form action="/MundoCine/CompraDulceria" method="GET">
-                
-                <button class="container-item-btn" type="submit">> Enviar</button>
-            </form>
+                <div class="container-btn">
+                <form action="/MundoCine/CompraDulceria" method="GET">
+                    <button class="item-btn" type="submit">> Enviar</button>
+                </form>
+            </div>
                 
         </div>
         <jsp:include page="components/footer.jsp"/>
