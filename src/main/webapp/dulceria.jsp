@@ -1,3 +1,4 @@
+<%@page import="modelo.dto.Locales"%>
 <%@page import="modelo.dto.itemDulceria"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,9 +24,15 @@
                 <div class="info-title"><span>Local</span></div>
                 <div class="info-locals">
                     <select>
-                        <<option value="value">textsssssssssssssssss</option>
-                        <<option value="value">text</option>
-                        <<option value="value">text</option>
+                    <% 
+                    List<Locales> locals = (List<Locales>) request.getAttribute("locales"); 
+                    if (locals != null) {
+                        for (Locales local : locals) {
+                    %>
+                    <option value="<%= local.getCodLocal() %>" ><%= local.getNombre() %></option>
+                
+                    <% }
+                    }%>
                     </select>
                 </div>
                     

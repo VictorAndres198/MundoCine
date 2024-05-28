@@ -4,6 +4,7 @@
     width: 1280px; 
     place-items: center;
     margin: auto;
+
 }
 
 .container{
@@ -14,6 +15,8 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    border-radius: 25px;
+    width: 100%
 }
 
 .container-title{
@@ -79,7 +82,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000;
     border-radius: 25px;
     padding: 1.5rem;
 }
