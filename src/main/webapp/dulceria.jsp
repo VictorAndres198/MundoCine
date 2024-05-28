@@ -49,7 +49,7 @@
                     if (itemsDulceria != null) {
                         for (itemDulceria item : itemsDulceria) {
                         String itemCategory = item.getCategoria().getNombre().toLowerCase();
-                        String itemDulceria = item.getNombre();
+                        String itemDulceria = item.getNombre().toLowerCase();
                         String imgPath= "resources/img/dulceria/"+itemCategory+"/"+itemDulceria+".jpg";
                 %>
                 <div class="content">
