@@ -2,6 +2,7 @@
 package ServLets;
 
 import Services.ServiceDulceria;
+import Services.ServiceLocales;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.dto.Locales;
 import modelo.dto.itemDulceria;
 
 
@@ -22,10 +24,13 @@ public class SvDulceria extends HttpServlet {
             throws ServletException, IOException {
         
         ServiceDulceria servDulceria = new ServiceDulceria();
+        ServiceLocales servLocales = new ServiceLocales();
         
         List<itemDulceria> itemsDulceria = servDulceria.FindAll();
+        List<Locales> locales = servLocales.FindAll();
         
         request.setAttribute("itemsDulceria", itemsDulceria);
+        request.setAttribute("locales", locales);
         
         response.setContentType("text/html;charset=UTF-8");
         getServletContext().getRequestDispatcher("/dulceria.jsp").include(request, response);
