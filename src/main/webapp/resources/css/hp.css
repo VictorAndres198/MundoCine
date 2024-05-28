@@ -5,12 +5,10 @@
 }
 
 #search_area {
-    background: url(C:\Users\Victor\OneDrive\Documentos\NetBeansProjects\MundoCine) center;
     background-size: cover;
     height: 273px;
     color: #fff;
 }
-
 .a-padding-extra-large {
     padding: 20px 26px !important;
 }
@@ -39,19 +37,6 @@ a, a:link, a:visited {
 }
 .a-spacing-top-extra-large {
     margin-top: 80px !important;
-}
-.a-spacing-base, .a-ws .a-ws-spacing-base {
-    margin-bottom: 12px !important;
-}
-.a-spacing-base, .a-ws .a-ws-spacing-base {
-    margin-bottom: 12px !important;
-}
-.a-size-extra-large {
-    text-rendering: optimizeLegibility;
-}
-.a-size-extra-large {
-    font-size: 28px !important;
-    line-height: 36px !important;
 }
 .a-ordered-list.a-nostyle li, .a-unordered-list.a-nostyle li, ol.a-nostyle li, ul.a-nostyle li {
     list-style: none;

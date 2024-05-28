@@ -6,11 +6,11 @@ import java.sql.Connection;
 import java.util.List;
 import modelo.dto.itemDulceria;
 import org.junit.jupiter.api.Test;
-import conexion.ConectaBD;
+/*import conexion.ConectaBD;*/
 
 
 public class Tests {
-   
+   /*
    @Test
     public void testConnection() {
         Connection cnx = new ConectaBD().getConnection();

@@ -2,6 +2,7 @@ modelo\dao\ContactDAO.class
 modelo\dao\RepositoryDulceria.class
 ServLets\SvHome.class
 modelo\dto\CategoriaItem.class
+modelo\dto\Locales.class
 ServLets\cntLogout.class
 modelo\dao\SuggestionsDAO.class
 modelo\dto\Suggestions.class
@@ -9,6 +10,7 @@ ServLets\cntLogin.class
 modelo\dto\Movie.class
 modelo\dao\ClaimsDAO.class
 modelo\dto\itemDulceria.class
+modelo\dao\LocalesDAO.class
 ServLets\cntSuggestions.class
 ServLets\SvCompraDulceria.class
 ServLets\cntContact.class
@@ -22,3 +24,4 @@ modelo\dto\Claims.class
 modelo\dto\Customer.class
 ServLets\cntCustomer.class
 modelo\dao\CustomerDAO.class
+ServLets\cntLocales.class

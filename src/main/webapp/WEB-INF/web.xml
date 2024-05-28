@@ -28,6 +28,10 @@
         <servlet-name>cntClaims</servlet-name>
         <servlet-class>ServLets.cntClaims</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cntLocales</servlet-name>
+        <servlet-class>ServLets.cntLocales</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvHome</servlet-name>
         <url-pattern>/SvHome</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>cntClaims</servlet-name>
         <url-pattern>/cntClaims</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cntLocales</servlet-name>
+        <url-pattern>/cntLocales</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

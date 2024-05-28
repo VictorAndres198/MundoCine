@@ -27,7 +27,7 @@
                     changeMonth: true, // Permitir cambio de mes
                     changeYear: true, // Permitir cambio de año
                     yearRange: "-100:+0", // Rango de años permitidos
-                    maxDate: "0", // Fecha máxima seleccionable (hoy)
+                    maxDate: "0" // Fecha máxima seleccionable (hoy)
                 });
             });
         </script>        
@@ -35,7 +35,7 @@
     <body>     
         <!-- ESTO ES EL NAVBAR -->
         <jsp:include page="components/navbar.jsp"/>
-
+        
         <div class="onpremiere">
             <div class="suggestions-container">
                 <div class="onpremiere-h1">

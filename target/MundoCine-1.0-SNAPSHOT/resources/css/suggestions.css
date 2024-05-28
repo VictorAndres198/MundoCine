@@ -3,11 +3,14 @@
     margin: 0;
     font-family: 'Roboto', 'Helvetica', Arial, sans-serif;    
 }
-
+.suggestions-principal-container{
+    width: 1280px;
+}
 .suggestionsUs {
     position: relative;
     width: 85%;
     padding: 40px 100px;
+    margin: auto;
 }
 
 .suggestionsUs .tittle {
