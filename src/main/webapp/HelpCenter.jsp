@@ -24,14 +24,16 @@
         
         
         <div class="hp-container">
-            <div id="search_area" class="a-section a-padding-extra-large a-text-center">
-            <div class="a-section content_container">
+            
+          <img style="width: 1280px; height: 283px; position: absolute;z-index: -1; object-fit: cover" src="resources/img/help-center/fog-bg.jpg" alt=""/>
+          <div id="search_area" class="a-section a-padding-extra-large a-text-center">
+            <div class="a-section">
                 <!-- comment <a class="a-spacing-base a-spacing-top-extra-large a-link-normal aok-block header_imdb_logo" href=""></a>-->
-                <p class="a-spacing-base a-size-extra-large" style="margin-top: 120px;">
+                <p style="margin-top: 185px; font-size: 2rem;font-weight: 600; color: #fff">
                     Preguntas Frecuentes
                 </p>
             </div>
-        </div>
+          </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr;">
             <div class="question-container" >
                 <ul class="a-unordered-list a-nostyle a-vertical">
