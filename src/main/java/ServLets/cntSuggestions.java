@@ -30,6 +30,7 @@ public class cntSuggestions extends HttpServlet {
                 s.setContenido(sugerencia);
                 String resp = new SuggestionsDAO().insert(s);
 
+                request.getRequestDispatcher("suggestions.jsp").forward(request, response);
             }
         }
     }
