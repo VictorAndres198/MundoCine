@@ -39,6 +39,7 @@
             }
         %>
         <jsp:include page="components/navbar.jsp"/>
+        <div style="width: 1280px; margin: auto;">
         <div class="locales">
             <div class="titulo"><h1>Locales</h1></div>
             <hr><br>
@@ -70,5 +71,6 @@
         </div>
 
         <jsp:include page="components/footer.jsp"/>
+        </div>
     </body>
 </html>
