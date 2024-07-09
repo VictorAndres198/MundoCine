@@ -157,12 +157,14 @@ body{
     transform: scale(0.4); 
     transform-origin: top left; 
     transition: opacity 0.1s ease, transform 0.1s ease; 
+    pointer-events: none;
 }
 
 #dropdown-navbar-menu.show {
     display: flex;
     opacity: 1; 
     transform: scale(1);
+    pointer-events: all;
 }
 
 .dropdown-btn-option{
