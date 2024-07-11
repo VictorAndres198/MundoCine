@@ -26,6 +26,7 @@ public class ClaimsDAO {
             ps.setDate(4, java.sql.Date.valueOf(c.getFecha_reclamo()));  // Asumiendo que `getFecha_reclamo` retorna un `String` en formato "yyyy-mm-dd"
             ps.setString(5, c.getAsunto_reclamo());
             ps.setString(6, c.getContenido_reclamo());
+            ps.setInt(7, c.getCod_local());
             ps.executeUpdate();
         } catch (SQLException ex) {
             resp = ex.getMessage();

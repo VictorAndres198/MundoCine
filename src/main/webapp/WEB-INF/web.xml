@@ -32,6 +32,18 @@
         <servlet-name>cntLocales</servlet-name>
         <servlet-class>ServLets.cntLocales</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SvAdmClaims</servlet-name>
+        <servlet-class>ServLets.SvAdmClaims</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditClaim</servlet-name>
+        <servlet-class>ServLets.EditClaim</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteClaim</servlet-name>
+        <servlet-class>ServLets.DeleteClaim</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvHome</servlet-name>
         <url-pattern>/SvHome</url-pattern>
@@ -63,6 +75,18 @@
     <servlet-mapping>
         <servlet-name>cntLocales</servlet-name>
         <url-pattern>/cntLocales</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvAdmClaims</servlet-name>
+        <url-pattern>/SvAdmClaims</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditClaim</servlet-name>
+        <url-pattern>/EditClaim</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteClaim</servlet-name>
+        <url-pattern>/DeleteClaim</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -16,6 +16,15 @@ public class Claims {
     private String asunto_reclamo;
     private String fecha_reclamo;
     private String contenido_reclamo;
+    private int Cod_local;
+
+    public int getCod_local() {
+        return Cod_local;
+    }
+
+    public void setCod_local(int Cod_local) {
+        this.Cod_local = Cod_local;
+    }
     
     public Claims(){
     }   

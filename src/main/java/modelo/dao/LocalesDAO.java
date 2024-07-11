@@ -67,4 +67,23 @@ public class LocalesDAO {
         }
         return lista;
     }
+    
+      public List<Locales> getLocales() {
+        List<Locales> locales = new ArrayList<>();
+        String lcs = "SELECT CodLocal, Nombre FROM Locales";
+
+        try (PreparedStatement st = cnx.prepareStatement(lcs);
+             ResultSet rt = st.executeQuery()) {
+
+            while (rt.next()) {
+                Locales local = new Locales();
+                local.setCodLocal(rt.getInt("CodLocal"));
+                local.setNombre(rt.getString("Nombre"));
+                locales.add(local);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return locales;
+    }
 }
