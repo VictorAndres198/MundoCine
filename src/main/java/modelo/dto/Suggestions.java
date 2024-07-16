@@ -10,17 +10,22 @@ package modelo.dto;
  */
 public class Suggestions {
     private int idsugerencia;
+    private String Nombre;
+    private String Correo;
     private String Asunto;
     private String Contenido;
 
     public Suggestions() {
     }
 
-    public Suggestions(int idsugerencia, String Asunto, String Contenido) {
+    public Suggestions(int idsugerencia, String Nombre, String Correo, String Asunto, String Contenido) {
         this.idsugerencia = idsugerencia;
+        this.Nombre = Nombre;
+        this.Correo = Correo;
         this.Asunto = Asunto;
         this.Contenido = Contenido;
     }
+
 
     public int getIdsugerencia() {
         return idsugerencia;
@@ -40,6 +45,22 @@ public class Suggestions {
 
     public String getContenido() {
         return Contenido;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
     }
 
     public void setContenido(String Contenido) {
