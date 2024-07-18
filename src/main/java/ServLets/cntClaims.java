@@ -21,7 +21,7 @@ public class cntClaims extends HttpServlet {
                 String fecha_reclamo = request.getParameter("fecha_reclamo");
                 String asunto_reclamo = request.getParameter("Asunto");
                 String contenido_reclamo = request.getParameter("ContenidoReclamo");
-                int cod_local = Integer.parseInt(request.getParameter("codLocal")); // Obtener Cod_local del formulario
+                int cod_local = Integer.parseInt(request.getParameter("codLocal"));
 
                 Claims c = new Claims();
                 c.setnombre_cliente(nombre_cliente);
@@ -30,12 +30,19 @@ public class cntClaims extends HttpServlet {
                 c.setfecha_reclamo(fecha_reclamo);
                 c.setasunto_reclamo(asunto_reclamo);
                 c.setcontenido_reclamo(contenido_reclamo);
-                c.setCod_local(cod_local); // Establecer Cod_local
+                c.setCod_local(cod_local);
 
                 ClaimsDAO claimsDAO = new ClaimsDAO();
                 String resp = claimsDAO.insert(c);
 
-                request.setAttribute("respuesta", resp); // Pasar la respuesta a la vista
+                String mensaje;
+                if (resp.isEmpty()) {
+                    mensaje = "Reclamo registrado exitosamente.";
+                } else {
+                    mensaje = "Error al registrar el reclamo: " + resp;
+                }
+
+                request.setAttribute("mensaje", mensaje);
                 request.getRequestDispatcher("/claims.jsp").forward(request, response);
             }
         }
