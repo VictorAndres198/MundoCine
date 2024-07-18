@@ -20,12 +20,12 @@ public class ClaimsDAO {
         String cadSQL = "INSERT INTO reclamos (NombreCli, CorreoReclamo, dniReclamo, fechaReclamo, AsuntoReclamo, ContenidoReclamo) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = cnx.prepareStatement(cadSQL)) {
-            ps.setString(1, c.getNombre_cliente());
-            ps.setString(2, c.getCorreo_reclamo());
-            ps.setString(3, c.getDni_reclamo());
-            ps.setDate(4, java.sql.Date.valueOf(c.getFecha_reclamo()));  // Asumiendo que `getFecha_reclamo` retorna un `String` en formato "yyyy-mm-dd"
-            ps.setString(5, c.getAsunto_reclamo());
-            ps.setString(6, c.getContenido_reclamo());
+            ps.setString(1, c.getnombre_cliente());
+            ps.setString(2, c.getcorreo_reclamo());
+            ps.setString(3, c.getdni_reclamo());
+            ps.setDate(4, java.sql.Date.valueOf(c.getfecha_reclamo()));  // Asumiendo que `getFecha_reclamo` retorna un `String` en formato "yyyy-mm-dd"
+            ps.setString(5, c.getasunto_reclamo());
+            ps.setString(6, c.getcontenido_reclamo());
             ps.setInt(7, c.getCod_local());
             ps.executeUpdate();
         } catch (SQLException ex) {

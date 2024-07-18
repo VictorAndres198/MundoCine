@@ -43,13 +43,13 @@ public class EditClaim extends HttpServlet {
         String contenido = request.getParameter("contenido");
 
         Claims claim = new Claims();
-        claim.setId_reclamos(id);
-        claim.setNombre_cliente(nombre);
-        claim.setCorreo_reclamo(correo);
-        claim.setDni_reclamo(dni);
-        claim.setFecha_reclamo(fecha);
-        claim.setAsunto_reclamo(asunto);
-        claim.setContenido_reclamo(contenido);
+        claim.setid_reclamos(id);
+        claim.setnombre_cliente(nombre);
+        claim.setcorreo_reclamo(correo);
+        claim.setdni_reclamo(dni);
+        claim.setfecha_reclamo(fecha);
+        claim.setasunto_reclamo(asunto);
+        claim.setcontenido_reclamo(contenido);
 
         try {
             admClaimsDAO.updateClaim(claim);

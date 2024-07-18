@@ -42,12 +42,12 @@ public class cntClaims extends HttpServlet {
                 //Int Cod_local = request.getParameter("codlocal");
 
                 Claims c = new Claims();
-                c.setNombre_cliente(nombre_cliente);
-                c.setCorreo_reclamo(correo_reclamo);
-                c.setDni_reclamo(dni_reclamo);
-                c.setFecha_reclamo(fecha_reclamo);
-                c.setAsunto_reclamo(asunto_reclamo);
-                c.setContenido_reclamo(contenido_reclamo);
+                c.setnombre_cliente(nombre_cliente);
+                c.setcorreo_reclamo(correo_reclamo);
+                c.setdni_reclamo(dni_reclamo);
+                c.setfecha_reclamo(fecha_reclamo);
+                c.setasunto_reclamo(asunto_reclamo);
+                c.setcontenido_reclamo(contenido_reclamo);
                 //c.setCod_local(Cod_local);
 
                 ClaimsDAO claimsDAO = new ClaimsDAO();

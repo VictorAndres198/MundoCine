@@ -37,7 +37,7 @@
                 </div>
                 <div class="mlps-header">
                     <div class="mlps-h-b"></div>
-                    <div style="padding: 0px 0px 0px 12px">¡Nos encantaría escuchar tus sugerencias! ¿Tienes alguna idea para mejorar nuestro servicio? ¡Déjanos tus comentarios aquí!</div>
+                    <div style="padding: 0px 0px 0px 12px">¡Nos encantaría escuchar algun inconveniente que hayas tenido! ¿Tienes alguna idea para mejorar nuestro servicio? ¡Déjanos tus comentarios aquí!</div>
                 </div>
                 <div style="display: flex; place-content: center; margin: 50px 0px;">
                     <div class="suggesion-form">

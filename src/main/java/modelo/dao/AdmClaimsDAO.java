@@ -10,6 +10,7 @@ import java.util.List;
 import modelo.dto.Claims;
 
 public class AdmClaimsDAO {
+
     private Connection connection;
 
     public AdmClaimsDAO() {
@@ -25,13 +26,13 @@ public class AdmClaimsDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     claim = new Claims();
-                    claim.setId_reclamos(rs.getInt("CodReclamo"));
-                    claim.setNombre_cliente(rs.getString("NombreCli"));
-                    claim.setCorreo_reclamo(rs.getString("CorreoReclamo"));
-                    claim.setDni_reclamo(rs.getString("dniReclamo"));
-                    claim.setFecha_reclamo(rs.getDate("fechaReclamo").toString());
-                    claim.setAsunto_reclamo(rs.getString("AsuntoReclamo"));
-                    claim.setContenido_reclamo(rs.getString("ContenidoReclamo"));
+                    claim.setid_reclamos(rs.getInt("CodReclamo"));
+                    claim.setnombre_cliente(rs.getString("NombreCli"));
+                    claim.setcorreo_reclamo(rs.getString("CorreoReclamo"));
+                    claim.setdni_reclamo(rs.getString("dniReclamo"));
+                    claim.setfecha_reclamo(rs.getDate("fechaReclamo").toString());
+                    claim.setasunto_reclamo(rs.getString("AsuntoReclamo"));
+                    claim.setcontenido_reclamo(rs.getString("ContenidoReclamo"));
                     claim.setCod_local(rs.getInt("CodLocal"));
                 }
             }
@@ -42,13 +43,13 @@ public class AdmClaimsDAO {
     public void updateClaim(Claims claim) throws SQLException {
         String query = "UPDATE Reclamos SET NombreCli = ?, CorreoReclamo = ?, dniReclamo = ?, fechaReclamo = ?, AsuntoReclamo = ?, ContenidoReclamo = ? WHERE CodReclamo = ?";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
-            ps.setString(1, claim.getNombre_cliente());
-            ps.setString(2, claim.getCorreo_reclamo());
-            ps.setString(3, claim.getDni_reclamo());
-            ps.setDate(4, java.sql.Date.valueOf(claim.getFecha_reclamo()));
-            ps.setString(5, claim.getAsunto_reclamo());
-            ps.setString(6, claim.getContenido_reclamo());
-            ps.setInt(7, claim.getId_reclamos());
+            ps.setString(1, claim.getnombre_cliente());
+            ps.setString(2, claim.getcorreo_reclamo());
+            ps.setString(3, claim.getdni_reclamo());
+            ps.setDate(4, java.sql.Date.valueOf(claim.getfecha_reclamo()));
+            ps.setString(5, claim.getasunto_reclamo());
+            ps.setString(6, claim.getcontenido_reclamo());
+            ps.setInt(7, claim.getid_reclamos());
             ps.executeUpdate();
         }
     }
@@ -69,13 +70,13 @@ public class AdmClaimsDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Claims claim = new Claims();
-                    claim.setId_reclamos(rs.getInt("CodReclamo"));
-                    claim.setNombre_cliente(rs.getString("NombreCli"));
-                    claim.setCorreo_reclamo(rs.getString("CorreoReclamo"));
-                    claim.setDni_reclamo(rs.getString("dniReclamo"));
-                    claim.setFecha_reclamo(rs.getDate("fechaReclamo").toString());
-                    claim.setAsunto_reclamo(rs.getString("AsuntoReclamo"));
-                    claim.setContenido_reclamo(rs.getString("ContenidoReclamo"));
+                    claim.setid_reclamos(rs.getInt("CodReclamo"));
+                    claim.setnombre_cliente(rs.getString("NombreCli"));
+                    claim.setcorreo_reclamo(rs.getString("CorreoReclamo"));
+                    claim.setdni_reclamo(rs.getString("dniReclamo"));
+                    claim.setfecha_reclamo(rs.getDate("fechaReclamo").toString());
+                    claim.setasunto_reclamo(rs.getString("AsuntoReclamo"));
+                    claim.setcontenido_reclamo(rs.getString("ContenidoReclamo"));
                     claim.setCod_local(rs.getInt("CodLocal"));
                     claimsList.add(claim);
                 }
