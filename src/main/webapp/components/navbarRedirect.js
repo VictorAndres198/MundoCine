@@ -42,7 +42,7 @@ function redirigirDulceria() {
 
 function redirigirLocales() {
     //Redirigir a la págima deseada
-    window.location.href = "locales.jsp";
+    window.location.href = "./cntLocales?accion=locales";
 }
 
 

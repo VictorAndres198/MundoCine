@@ -22,26 +22,20 @@ import modelo.dto.Locales;
 public class cntLocales extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Boolean redireccionado = (Boolean) request.getSession().getAttribute("redireccionado");
-        if (redireccionado == null || !redireccionado) {
-            // Realizar la redirección
-            response.sendRedirect(request.getContextPath() + "/cntLocales?accion=locales");
-            
-            // Marcar la redirección como realizada
-            request.getSession().setAttribute("redireccionado", true);
-        } else {
-            // Obtener la lista de locales
-            List<Locales> lista = new LocalesDAO().getList();
-            
-            // Establecer la lista como un atributo de solicitud
-            request.setAttribute("lista", lista);
-            
-            // Reenviar la solicitud al JSP
-            request.getRequestDispatcher("/locales.jsp").forward(request, response);
-            request.getSession().removeAttribute("redireccionado");
-        }
-    }
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        String accion = request.getParameter("accion");
+        List<Locales> lista = new LocalesDAO().getList();
+        if (accion != null) {
+            if (accion.equals("locales")) {
+                // Establece los atributos de la solicitud
+                request.setAttribute("lista", lista);;
 
+                // Despacha la solicitud al JSP
+                request.getRequestDispatcher("/locales.jsp").forward(request, response);
+            }
+    }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
