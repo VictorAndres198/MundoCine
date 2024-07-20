@@ -182,9 +182,13 @@ insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (2
 insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (3,'snicker','snack de chocolate',7.50,5);
 insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (1,'gaseosa','gaseosa Grande de 32 oz',15.00,3);
 
-INSERT INTO Locales (Nombre, Direccion) VALUES ('MundoCine Angamos', 'Av. Angamos Nº 1803 y/o Av. Tomas Marsano Nº 961- Surquillo');
-INSERT INTO Locales (Nombre, Direccion) VALUES ('MundoCine Gamarra', 'Avenida Aviación 950 La Victoria, LIMA 13');
-INSERT INTO Locales (Nombre, Direccion) VALUES ('MundoCine San Miguel', 'Av. La Marina cuadra 25 con esquina Av. Parque de las Leyendas');
+INSERT INTO Locales (Nombre, Direccion) VALUES 
+('MundoCine Plaza Norte', 'Av. Alfredo Mendiola 1400, San Martín de Porres 15311'),
+('MundoCine Mega Plaza', 'Av. Alfredo Mendiola 3698, San Martín de Porres 15311'),
+('MundoCine Real Plaza', 'Av. Angamos Este 2681, San Borja 15036'),
+('MundoCine Mall Aventura', 'Av. Nicolás Ayllón, Santa Anita 15008'),
+('MundoCine Plaza Lima Sur', 'Av Paseo de la República 355, Chorrillos 15064'),
+('MundoCine Jockey Plaza', 'Av. Javier Prado Este 4200, Santiago de Surco 15023');
 
 INSERT INTO Reclamos (NombreCli, CorreoReclamo, dniReclamo, fechaReclamo, AsuntoReclamo, ContenidoReclamo, CodLocal) 
 VALUES ('Juan Pérez', 'juan.perez@example.com', '12345678', '2024-07-10', 'Problema con el sonido', 'El sonido de la película estaba muy bajo.', 1);
