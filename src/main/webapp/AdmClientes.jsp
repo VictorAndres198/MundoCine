@@ -66,7 +66,7 @@
                                                 <input type="date" name="fechanacimiento" value="${fechanacimiento}" placeholder="DD-MM-YYYY" class="entrada-admclientes" id="fechanacimiento">
 
                                                 <label for="usuario" class="etiqueta-admclientes">(*)Usuario</label>
-                                                <input type="text" name="usuario" value="${usuario}" placeholder="Insertar Usuario)" class="entrada-admclientes" id="usuario"/>
+                                                <input type="text" name="usuario" value="${usuario}" placeholder="Insertar Usuario" class="entrada-admclientes" id="usuario"/>
 
                                                 <label for="correo" class="etiqueta-admclientes">(*)Correo</label>
                                                 <input type="email" name="correo" value="${correo}" placeholder="ejemplo@email.com" class="entrada-admclientes" id="correo"/>
