@@ -1,39 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ServLets;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.dao.LocalesDAO;
-import modelo.dto.Locales;
+import modelo.dao.CustomerDAO;
+import modelo.dto.Customer;
+import conexion.ConectaBD;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author juand
- */
-public class cntLocales extends HttpServlet {
+public class cntAdmClientes extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) //evalúa las peticiones que ha hecho el usuario
+            throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
-        List<Locales> lista = new LocalesDAO().getList();
         if (accion != null) {
-            if (accion.equals("locales")) {
-                // Establece los atributos de la solicitud
-                request.setAttribute("lista", lista);;
-
-                // Despacha la solicitud al JSP
-                request.getRequestDispatcher("/locales.jsp").forward(request, response);
-            }
+            
         }
     }
 
@@ -49,7 +38,18 @@ public class cntLocales extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        CustomerDAO customerDAO = new CustomerDAO();
+        List<Customer> clientes = customerDAO.ListarClientes();
+
+        Gson gson = new Gson();
+        String jsonClientes = gson.toJson(clientes);
+
+        PrintWriter out = response.getWriter();
+        out.print(jsonClientes);
+        out.flush();
     }
 
     /**

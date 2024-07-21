@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.dto.Customer;
 import conexion.ConectaBD;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerDAO {
     private Connection cnx;
@@ -65,6 +67,36 @@ public class CustomerDAO {
             ex.printStackTrace();
         }
         return cst;
+    }
+    
+    public List<Customer> ListarClientes(){
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql = "SELECT CodCliente, Nombres, ApePaterno, ApeMaterno, DNI, FechaNacimiento, Usuario, Correo, Contraseña FROM Cliente;";
+        List<Customer> lista = null;
+        
+        try{
+            ps = cnx.prepareStatement(sql);
+            rs = ps.executeQuery();
+            lista = new ArrayList<>();
+            while(rs.next()){
+            Customer cus = new Customer(
+                    rs.getInt("CodCliente"),
+                    rs.getString("Nombres"),
+                    rs.getString("ApePaterno"),
+                    rs.getString("ApeMaterno"),
+                    Integer.toString(rs.getInt("DNI")),
+                    rs.getString("FechaNacimiento"),
+                    rs.getString("Usuario"),
+                    rs.getString("Correo"),
+                    rs.getString("Contraseña")
+            );
+            lista.add(cus);
+            }
+        }catch(SQLException ex){
+            System.out.println("Error al listar los productos: " + ex);
+        }
+        return lista;
     }
 
     /*public Customer get(int idx) {
