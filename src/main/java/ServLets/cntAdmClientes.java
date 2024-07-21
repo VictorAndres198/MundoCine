@@ -14,6 +14,7 @@ import conexion.ConectaBD;
 import javax.servlet.http.HttpSession;
 
 public class cntAdmClientes extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) //evalúa las peticiones que ha hecho el usuario
@@ -22,7 +23,7 @@ public class cntAdmClientes extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
         if (accion != null) {
-            
+
         }
     }
 
@@ -63,7 +64,48 @@ public class cntAdmClientes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        String nombre = request.getParameter("nombres");
+        String apepaterno = request.getParameter("apepat");
+        String apematerno = request.getParameter("apemat");
+        String dni = request.getParameter("dni");
+        String fechanacimiento = request.getParameter("fechanacimiento");
+        String usuario = request.getParameter("usuario");
+        String correo = request.getParameter("correo");
+        String contrasena = request.getParameter("contrasena");
+
+        // Validar DNI
+        String errorMsg = "";
+        if (dni == null || !dni.matches("\\d{8}")) {
+            errorMsg = "El DNI debe tener exactamente 8 dígitos.";
+        } else {
+            // Crear objeto Customer
+            Customer customer = new Customer();
+            customer.setNombre(nombre);
+            customer.setApepaterno(apepaterno);
+            customer.setApematerno(apematerno);
+            customer.setDni(dni); // Almacenar como cadena
+            customer.setFechanacimiento(fechanacimiento);
+            customer.setUsuario(usuario);
+            customer.setCorreo(correo);
+            customer.setContraseña(contrasena);
+
+            // Registrar cliente
+            CustomerDAO customerDAO = new CustomerDAO();
+            String resp = customerDAO.RegistrarCliente(customer);
+
+            // Crear respuesta
+            PrintWriter out = response.getWriter();
+            if (!errorMsg.isEmpty()) {
+                out.print("{\"error\": \"" + errorMsg + "\"}");
+            } else {
+                out.print("{\"success\": \"" + resp + "\"}");
+            }
+            out.flush();
+        }
     }
 
     /**

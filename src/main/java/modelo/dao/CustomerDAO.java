@@ -85,7 +85,7 @@ public class CustomerDAO {
                     rs.getString("Nombres"),
                     rs.getString("ApePaterno"),
                     rs.getString("ApeMaterno"),
-                    Integer.toString(rs.getInt("DNI")),
+                    rs.getString("DNI"),
                     rs.getString("FechaNacimiento"),
                     rs.getString("Usuario"),
                     rs.getString("Correo"),
@@ -97,6 +97,37 @@ public class CustomerDAO {
             System.out.println("Error al listar los productos: " + ex);
         }
         return lista;
+    }
+    
+    public String RegistrarCliente(Customer c) {
+        String resp = "";
+        PreparedStatement ps = null;
+        String sql = "INSERT INTO Cliente (Nombres, ApePaterno, ApeMaterno, DNI, FechaNacimiento, Usuario, Correo, Contraseña) VALUES (?,?,?,?,?,?,?,?);";
+
+        try {
+            ps = cnx.prepareStatement(sql);
+            ps.setString(1, c.getNombre());
+            ps.setString(2, c.getApepaterno());
+            ps.setString(3, c.getApematerno());
+            ps.setString(4, c.getDni());
+            ps.setString(5, c.getFechanacimiento());
+            ps.setString(6, c.getUsuario());
+            ps.setString(7, c.getCorreo());
+            ps.setString(8, c.getContraseña());
+            ps.executeUpdate(); // Ejecutar la instrucción SQL
+            resp = "Cliente registrado exitosamente";
+        } catch (SQLException ex) {
+            resp = ex.getMessage();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                resp = ex.getMessage();
+            }
+        }
+        return resp;
     }
 
     /*public Customer get(int idx) {

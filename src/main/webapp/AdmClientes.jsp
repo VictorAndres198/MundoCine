@@ -47,7 +47,7 @@
                                             <h1 class="modal-tittle fs-5" id="exampleModalLabel">Formulario de Clientes</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form action="${pageContext.request.contextPath}/cntAdmProductos" method="post" class="formulario-admproductos" id="formProductos">
+                                        <form action="${pageContext.request.contextPath}/cntAdmClientes" method="post" class="formulario-admproductos" id="formProductos">
                                             <fieldset class="campos-admproductos">
                                                 <br>
                                                 <label for="nombres" class="etiqueta-admclientes">(*)Nombres</label>
@@ -124,17 +124,17 @@
                         <div class="contenedor-tabla-admclientes">
                             <table class="tabla-admclientes">
                                 <thead class="cabeza-tabla-admclientes">
-                                    <tr class="fila-cabeza-tabla-admproductos"">
-                                        <td class="cuadro-cabeza-tabla-admproductos">Código</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">Nombre</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">A. Paterno</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">A. Materno</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">DNI</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">Fecha de Nacimiento</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">Usuario</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">Correo</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">Contraseña</td>
-                                        <td class="cuadro-cabeza-tabla-admproductos">Acciones</td>
+                                    <tr class="fila-cabeza-tabla-admclientes"">
+                                        <td class="cuadro-cabeza-tabla-admclientes">Código</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">Nombre</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">A. Paterno</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">A. Materno</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">DNI</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">Fecha de Nacimiento</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">Usuario</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">Correo</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">Contraseña</td>
+                                        <td class="cuadro-cabeza-tabla-admclientes">Acciones</td>
                                     </tr>
                                 </thead>
                                 <tbody class="cuerpo-tabla-admclientes">
@@ -168,6 +168,79 @@
 
                                     document.getElementById('btnRegistrar').style.display = 'none';
                                 }
+        </script>
+        <script>
+            $(document).ready(function () {
+                // Cargar datos de clientes al cargar la página
+                loadClientes();
+
+                // Manejar el envío del formulario
+                $("#formProductos").on("submit", function (event) {
+                    event.preventDefault();
+
+                    // Obtener el valor del DNI como cadena
+                    var dni = $("#dni").val().trim();
+
+                    // Validar que el DNI tenga exactamente 8 dígitos
+                    if (!/^\d{8}$/.test(dni)) {
+                        toastr.error("El DNI debe tener exactamente 8 dígitos.");
+                        return; // Detener el envío del formulario
+                    }
+
+                    $.ajax({
+                        url: 'cntAdmClientes',
+                        method: 'POST',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            if (response.error) {
+                                toastr.error("Error al registrar el cliente: " + response.error);
+                            } else {
+                                toastr.success("Cliente registrado exitosamente");
+                                $("#exampleModal").modal('hide');
+                                loadClientes(); // Recargar la lista de clientes
+                                clearForm(); // Limpiar el formulario
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            toastr.error("Error en la solicitud AJAX: " + status + " - " + error);
+                        }
+                    });
+                });
+            });
+
+            function loadClientes() {
+                $.ajax({
+                    url: 'cntAdmClientes',
+                    method: 'GET',
+                    success: function (data) {
+                        console.log("Datos recibidos:", data); // Agrega esta línea
+                        var tbody = $(".cuerpo-tabla-admclientes");
+                        tbody.empty(); // Limpiar la tabla antes de agregar los datos
+                        $.each(data, function (i, cliente) {
+                            var row = "<tr class='fila-cuerpo-tabla-admclientes'>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.codcliente + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.nombre + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.apepaterno + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.apematerno + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.dni + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.fechanacimiento + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.usuario + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.correo + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.contrasena + "</td>" +
+                                    "<td class='cuadro-cuerpo-tabla-admclientes'><button class='btn-editar-admclientes'>Editar</button> <button class='btn-eliminar-admclientes'>Eliminar</button></td>" +
+                                    "</tr>";
+                            tbody.append(row);
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error en la solicitud AJAX: " + status + " - " + error);
+                    }
+                });
+            }
+
+            function clearForm() {
+                $("#formProductos")[0].reset(); // Limpia todos los campos del formulario
+            }
         </script>
     </body>
 </html>
