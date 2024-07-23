@@ -88,38 +88,7 @@
                             </div>
                         </div>
                     </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                    <script>
-                                $(document).ready(function () {
-                                    $.ajax({
-                                        url: 'cntAdmClientes',
-                                        method: 'GET',
-                                        success: function (data) {
-                                            console.log("Datos recibidos:", data); // Agrega esta línea
-                                            var tbody = $(".cuerpo-tabla-admclientes");
-                                            tbody.empty(); // Limpiar la tabla antes de agregar los datos
-                                            $.each(data, function (i, cliente) {
-                                                var row = "<tr class='fila-cuerpo-tabla-admproductos'>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.codcliente + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.nombre + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.apepaterno + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.apematerno + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.dni + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.fechanacimiento + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.usuario + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.correo + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.contrasena + "</td>" +
-                                                        "<td class='cuadro-cuerpo-tabla-admclientes'><button class='btn-editar-admclientes'>Editar</button> <button class='btn-eliminar-admclientes'>Eliminar</button></td>" +
-                                                        "</tr>";
-                                                tbody.append(row);
-                                            });
-                                        },
-                                        error: function (xhr, status, error) {
-                                            console.log("Error en la solicitud AJAX: " + status + " - " + error);
-                                        }
-                                    });
-                                });
-                    </script>
+
                     <div class="mostrar-clientes">
                         <div class="contenedor-tabla-admclientes">
                             <table class="tabla-admclientes">
@@ -146,101 +115,151 @@
                 </main>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
         <script>
+                                $(document).ready(function () {
+                                    loadClientes(); // Cargar datos de clientes al cargar la página
+
+                                    // Manejar el envío del formulario
+                                    $("#formProductos").on("submit", function (event) {
+                                        event.preventDefault();
+                                        var dni = $("#dni").val().trim();
+
+                                        // Validar DNI
+                                        if (!/^\d{8}$/.test(dni)) {
+                                            toastr.error("El DNI debe tener exactamente 8 dígitos.");
+                                            return; // Detener el envío del formulario
+                                        }
+
+                                        submitForm(); // Enviar formulario
+                                    });
+
+                                    // Editar cliente
+                                    $(".cuerpo-tabla-admclientes").on("click", ".btn-editar-admclientes", function () {
+                                        var clienteId = $(this).data("id");
+                                        $.ajax({
+                                            url: 'cntAdmClientes',
+                                            method: 'GET',
+                                            data: {accion: 'get', id: clienteId},
+                                            success: function (data) {
+                                                // Rellenar el formulario con los datos del cliente
+                                                $("#codcliente").val(data.codcliente);
+                                                $("#nombres").val(data.nombre);
+                                                $("#apepat").val(data.apepaterno);
+                                                $("#apemat").val(data.apematerno);
+                                                $("#dni").val(data.dni);
+                                                $("#fechanacimiento").val(data.fechanacimiento);
+                                                $("#usuario").val(data.usuario);
+                                                $("#correo").val(data.correo);
+                                                $("#contrasena").val(data.contrasena);
+
+                                                setEditarContext(); // Cambiar el contexto a editar
+                                                $("#exampleModal").modal('show'); // Mostrar el modal
+                                            },
+                                            error: function (xhr, status, error) {
+                                                toastr.error("Error al obtener los datos del cliente.");
+                                            }
+                                        });
+                                    });
+
+                                    // Eliminar cliente
+                                    $(".cuerpo-tabla-admclientes").on("click", ".btn-eliminar-admclientes", function () {
+                                        var clienteId = $(this).data("id");
+                                        if (confirm("¿Está seguro que desea eliminar este cliente?")) {
+                                            $.ajax({
+                                                url: 'cntAdmClientes',
+                                                method: 'POST',
+                                                data: {accion: 'delete', id: clienteId},
+                                                success: function (response) {
+                                                    if (response.error) {
+                                                        toastr.error("Error al eliminar el cliente: " + response.error);
+                                                    } else {
+                                                        toastr.success("Cliente eliminado exitosamente.");
+                                                        loadClientes(); // Recargar la lista de clientes
+                                                    }
+                                                },
+                                                error: function (xhr, status, error) {
+                                                    toastr.error("Error en la solicitud AJAX: " + status + " - " + error);
+                                                }
+                                            });
+                                        }
+                                    });
+
+                                    // Limpia el formulario cuando el modal se cierra
+                                    $('#exampleModal').on('hidden.bs.modal', function () {
+                                        clearForm();
+                                    });
+                                });
+
+                                function loadClientes() {
+                                    $.ajax({
+                                        url: 'cntAdmClientes',
+                                        method: 'GET',
+                                        success: function (data) {
+                                            var tbody = $(".cuerpo-tabla-admclientes");
+                                            tbody.empty(); // Limpiar la tabla antes de agregar los datos
+                                            $.each(data, function (i, cliente) {
+                                                var row = "<tr class='fila-cuerpo-tabla-admclientes'>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.codcliente + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.nombre + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.apepaterno + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.apematerno + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.dni + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.fechanacimiento + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.usuario + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.correo + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.contrasena + "</td>" +
+                                                        "<td class='cuadro-cuerpo-tabla-admclientes'><button class='btn-editar-admclientes' data-id='" + cliente.codcliente + "'>Editar</button> <button class='btn-eliminar-admclientes' data-id='" + cliente.codcliente + "'>Eliminar</button></td>" +
+                                                        "</tr>";
+                                                tbody.append(row);
+                                            });
+                                        },
+                                        error: function (xhr, status, error) {
+                                            console.log("Error en la solicitud AJAX: " + status + " - " + error);
+                                        }
+                                    });
+                                }
+
+                                function submitForm() {
+                                    $.ajax({
+                                        url: 'cntAdmClientes',
+                                        method: 'POST',
+                                        data: $("#formProductos").serialize(),
+                                        success: function (response) {
+                                            if (response.error) {
+                                                toastr.error("Error al registrar el cliente: " + response.error);
+                                            } else {
+                                                toastr.success("Cliente registrado exitosamente");
+                                                $("#exampleModal").modal('hide');
+                                                loadClientes(); // Recargar la lista de clientes
+                                            }
+                                        },
+                                        error: function (xhr, status, error) {
+                                            toastr.error("Error en la solicitud AJAX: " + status + " - " + error);
+                                        }
+                                    });
+                                }
+
+                                function clearForm() {
+                                    $("#formProductos")[0].reset(); // Limpia todos los campos del formulario
+                                }
+
                                 function setAgregarContext() {
-                                    // Ocultar botones Actualizar y Eliminar, y el label de eliminación
                                     document.getElementById('btnActualizar').style.display = 'none';
                                     document.getElementById('btnEliminar').style.display = 'none';
                                     document.getElementById('lblDesea').style.display = 'none';
-
-                                    // Mostrar el botón Registrar
                                     document.getElementById('btnRegistrar').style.display = 'inline-block';
                                 }
 
-                                // También puedes definir una función para mostrar los botones Actualizar y Eliminar cuando sea necesario
                                 function setEditarContext() {
                                     document.getElementById('btnActualizar').style.display = 'inline-block';
-                                    document.getElementById('btnEliminar').style.display = 'inline-block';
-                                    document.getElementById('lblDesea').style.display = 'inline-block';
-
+                                    document.getElementById('btnEliminar').style.display = 'none';
+                                    document.getElementById('lblDesea').style.display = 'none';
                                     document.getElementById('btnRegistrar').style.display = 'none';
                                 }
-        </script>
-        <script>
-            $(document).ready(function () {
-                // Cargar datos de clientes al cargar la página
-                loadClientes();
-
-                // Manejar el envío del formulario
-                $("#formProductos").on("submit", function (event) {
-                    event.preventDefault();
-
-                    // Obtener el valor del DNI como cadena
-                    var dni = $("#dni").val().trim();
-
-                    // Validar que el DNI tenga exactamente 8 dígitos
-                    if (!/^\d{8}$/.test(dni)) {
-                        toastr.error("El DNI debe tener exactamente 8 dígitos.");
-                        return; // Detener el envío del formulario
-                    }
-
-                    $.ajax({
-                        url: 'cntAdmClientes',
-                        method: 'POST',
-                        data: $(this).serialize(),
-                        success: function (response) {
-                            if (response.error) {
-                                toastr.error("Error al registrar el cliente: " + response.error);
-                            } else {
-                                toastr.success("Cliente registrado exitosamente");
-                                $("#exampleModal").modal('hide');
-                                loadClientes(); // Recargar la lista de clientes
-                                clearForm(); // Limpiar el formulario
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            toastr.error("Error en la solicitud AJAX: " + status + " - " + error);
-                        }
-                    });
-                });
-            });
-
-            function loadClientes() {
-                $.ajax({
-                    url: 'cntAdmClientes',
-                    method: 'GET',
-                    success: function (data) {
-                        console.log("Datos recibidos:", data); // Agrega esta línea
-                        var tbody = $(".cuerpo-tabla-admclientes");
-                        tbody.empty(); // Limpiar la tabla antes de agregar los datos
-                        $.each(data, function (i, cliente) {
-                            var row = "<tr class='fila-cuerpo-tabla-admclientes'>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.codcliente + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.nombre + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.apepaterno + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.apematerno + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.dni + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.fechanacimiento + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.usuario + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.correo + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'>" + cliente.contrasena + "</td>" +
-                                    "<td class='cuadro-cuerpo-tabla-admclientes'><button class='btn-editar-admclientes'>Editar</button> <button class='btn-eliminar-admclientes'>Eliminar</button></td>" +
-                                    "</tr>";
-                            tbody.append(row);
-                        });
-                    },
-                    error: function (xhr, status, error) {
-                        console.log("Error en la solicitud AJAX: " + status + " - " + error);
-                    }
-                });
-            }
-
-            function clearForm() {
-                $("#formProductos")[0].reset(); // Limpia todos los campos del formulario
-            }
         </script>
     </body>
 </html>

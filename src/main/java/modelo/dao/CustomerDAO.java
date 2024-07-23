@@ -129,6 +129,38 @@ public class CustomerDAO {
         }
         return resp;
     }
+    
+    public Customer ObtenerCliente (int cod){
+        Customer c = null;
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql = "SELECT CodCliente, Nombres, ApePaterno, ApeMaterno, DNI, FechaNacimiento, Usuario, Correo, Contraseña FROM Cliente WHERE CodCliente=?;";
+        
+        try{
+            ps = cnx.prepareStatement(sql);
+            ps.setInt(1, cod);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                c = new Customer();
+                c.setCodcliente(rs.getInt("CodCliente"));
+                c.setNombre(rs.getString("Nombres"));
+                c.setApepaterno(rs.getString("ApePaterno"));
+                c.setApematerno(rs.getString("ApeMaterno"));
+                c.setDni(rs.getString("DNI"));
+                c.setFechanacimiento(rs.getString("FechaNacimiento"));
+                c.setUsuario(rs.getString("Usuario"));
+                c.setCorreo(rs.getString("Correo"));
+                c.setContraseña(rs.getString("Contraseña"));
+            } else {
+                System.out.println("No se encontró ningún cliente con el código: " + cod);
+            }
+            rs.close();
+            ps.close();
+        }catch(SQLException ex){
+            System.out.println("Error al obtener cliente por su código: " + ex);
+        }
+        return c;
+    }
 
     /*public Customer get(int idx) {
         Customer cst = null;

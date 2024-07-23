@@ -42,15 +42,30 @@ public class cntAdmClientes extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        CustomerDAO customerDAO = new CustomerDAO();
-        List<Customer> clientes = customerDAO.ListarClientes();
+        String accion = request.getParameter("accion");
+        if ("get".equals(accion)) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            CustomerDAO customerDAO = new CustomerDAO();
+            Customer cliente = customerDAO.ObtenerCliente(id);
 
-        Gson gson = new Gson();
-        String jsonClientes = gson.toJson(clientes);
+            Gson gson = new Gson();
+            String jsonCliente = gson.toJson(cliente);
 
-        PrintWriter out = response.getWriter();
-        out.print(jsonClientes);
-        out.flush();
+            PrintWriter out = response.getWriter();
+            out.print(jsonCliente);
+            out.flush();
+        } else {
+            // Manejo normal de la solicitud GET
+            CustomerDAO customerDAO = new CustomerDAO();
+            List<Customer> clientes = customerDAO.ListarClientes();
+
+            Gson gson = new Gson();
+            String jsonClientes = gson.toJson(clientes);
+
+            PrintWriter out = response.getWriter();
+            out.print(jsonClientes);
+            out.flush();
+        }
     }
 
     /**
