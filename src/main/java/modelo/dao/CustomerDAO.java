@@ -189,6 +189,34 @@ public class CustomerDAO {
         }
         return resp;
     }
+    
+    public String EliminarCliente(int codCliente) {
+        String resp = "";
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM Cliente WHERE CodCliente=?;";
+
+        try {
+            ps = cnx.prepareStatement(sql);
+            ps.setInt(1, codCliente);
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                resp = "Cliente eliminado exitosamente";
+            } else {
+                resp = "No se encontró el cliente con el código proporcionado";
+            }
+        } catch (SQLException ex) {
+            resp = ex.getMessage();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                resp = ex.getMessage();
+            }
+        }
+        return resp;
+    }
 
     /*public Customer get(int idx) {
         Customer cst = null;

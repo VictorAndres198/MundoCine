@@ -76,10 +76,8 @@
                                                 <input type="hidden" name="codcliente" value="${codcliente}" id="codcliente" value="12345"/>
 
                                                 <label class="nota" id="lblObligatorio">No olvide que los campos con (*) son <b>obligatorios</b></label>
-                                                <label class="nota" id="lblDesea">¿Desea eliminar este producto?</label>
                                                 <input type="submit" value="Registrar" name="accion" class="button-admclientes" id="btnRegistrar" />
                                                 <input type="submit" value="Actualizar" name="accion" class="button-admclientes" id="btnActualizar" />
-                                                <input type="submit" value="Eliminar" name="accion" class="button-admclientes" id="btnEliminar" />
                                             </fieldset>
                                         </form>
                                     </div>
@@ -281,15 +279,11 @@
 
                                 function setAgregarContext() {
                                     document.getElementById('btnActualizar').style.display = 'none';
-                                    document.getElementById('btnEliminar').style.display = 'none';
-                                    document.getElementById('lblDesea').style.display = 'none';
                                     document.getElementById('btnRegistrar').style.display = 'inline-block';
                                 }
 
                                 function setEditarContext() {
                                     document.getElementById('btnActualizar').style.display = 'inline-block';
-                                    document.getElementById('btnEliminar').style.display = 'none';
-                                    document.getElementById('lblDesea').style.display = 'none';
                                     document.getElementById('btnRegistrar').style.display = 'none';
                                 }
         </script>

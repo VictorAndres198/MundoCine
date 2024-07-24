@@ -165,6 +165,12 @@ public class cntAdmClientes extends HttpServlet {
                     }
                     out.flush();
                 }
+            } else if ("delete".equals(accion)) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                CustomerDAO customerDAO = new CustomerDAO();
+                String resultado = customerDAO.EliminarCliente(id);
+                response.setContentType("application/json");
+                response.getWriter().write("{\"message\": \"" + resultado + "\"}");
             }
         }
     }
