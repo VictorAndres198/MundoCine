@@ -18,7 +18,6 @@
         <link href="resources/css/Admin.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/Admin-Display.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <title>Clientes</title>
     </head>
@@ -74,7 +73,7 @@
                                                 <label for="contrasena" class="etiqueta-admclientes">(*)Contraseña</label>
                                                 <input type="text" name="contrasena" value="${contrasena}" placeholder="Insertar Contraseña" class="entrada-admclientes" id="contrasena"/>
 
-                                                <input type="hidden" name="codcliente" value="${codcliente}" />
+                                                <input type="hidden" name="codcliente" value="${codcliente}" id="codcliente" value="12345"/>
 
                                                 <label class="nota" id="lblObligatorio">No olvide que los campos con (*) son <b>obligatorios</b></label>
                                                 <label class="nota" id="lblDesea">¿Desea eliminar este producto?</label>
@@ -134,7 +133,11 @@
                                             return; // Detener el envío del formulario
                                         }
 
-                                        submitForm(); // Enviar formulario
+                                        if ($("#btnActualizar").is(":visible")) {
+                                            updateCliente(); // Llamar a la función para actualizar cliente
+                                        } else {
+                                            submitForm(); // Llamar a la función para registrar cliente
+                                        }
                                     });
 
                                     // Editar cliente
@@ -227,7 +230,7 @@
                                     $.ajax({
                                         url: 'cntAdmClientes',
                                         method: 'POST',
-                                        data: $("#formProductos").serialize(),
+                                        data: $("#formProductos").serialize() + "&accion=Registrar", // Añade el parámetro de acción
                                         success: function (response) {
                                             if (response.error) {
                                                 toastr.error("Error al registrar el cliente: " + response.error);
@@ -238,6 +241,35 @@
                                             }
                                         },
                                         error: function (xhr, status, error) {
+                                            toastr.error("Error en la solicitud AJAX: " + status + " - " + error);
+                                        }
+                                    });
+                                }
+
+                                function updateCliente() {
+                                    $.ajax({
+                                        url: 'cntAdmClientes',
+                                        method: 'POST',
+                                        data: $("#formProductos").serialize() + "&accion=Actualizar",
+                                        success: function (response) {
+                                            console.log("Respuesta del servidor:", response); // Registro de depuración
+                                            try {
+                                                const jsonResponse = typeof response === 'string' ? JSON.parse(response) : response;
+
+                                                if (jsonResponse.error) {
+                                                    toastr.error("Error al actualizar el cliente: " + jsonResponse.error);
+                                                } else {
+                                                    toastr.success("Cliente actualizado exitosamente");
+                                                    $("#exampleModal").modal('hide');
+                                                    loadClientes(); // Recargar la lista de clientes
+                                                }
+                                            } catch (e) {
+                                                console.error("Error parsing JSON response:", e);
+                                                toastr.error("Error parsing JSON response.");
+                                            }
+                                        },
+                                        error: function (xhr, status, error) {
+                                            console.error("Error en la solicitud AJAX:", status, error); // Registro de errores
                                             toastr.error("Error en la solicitud AJAX: " + status + " - " + error);
                                         }
                                     });

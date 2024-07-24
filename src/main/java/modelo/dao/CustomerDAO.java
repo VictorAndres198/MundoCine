@@ -161,6 +161,34 @@ public class CustomerDAO {
         }
         return c;
     }
+    
+    public String ActualizarCliente (Customer c){
+        String resp = "";
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql = "UPDATE Cliente SET Nombres=?, ApePaterno=?, ApeMaterno=?, DNI=?, FechaNacimiento=?, Usuario=?, Correo=?, Contraseña=? WHERE CodCliente=?;";
+        
+        try{
+            ps = cnx.prepareStatement(sql);
+            ps.setString(1, c.getNombre());
+            ps.setString(2, c.getApepaterno());
+            ps.setString(3, c.getApematerno());
+            ps.setString(4, c.getDni());
+            ps.setString(5, c.getFechanacimiento());
+            ps.setString(6, c.getUsuario());
+            ps.setString(7, c.getCorreo());
+            ps.setString(8,c.getContraseña());
+            ps.setInt(9, c.getCodcliente());
+            int ctos = ps.executeUpdate();
+            if (ctos == 0) {
+                resp = "No se ha actualizado";
+            }
+            ps.close();
+        }catch(SQLException ex){
+            resp = ex.getMessage();
+        }
+        return resp;
+    }
 
     /*public Customer get(int idx) {
         Customer cst = null;
