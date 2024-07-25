@@ -23,7 +23,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int codcliente, String nombre, String apepaterno, String apematerno, String dni, String usuario, String correo, String fechanacimiento, String contrasena) {
+    public Customer(int codcliente, String nombre, String apepaterno, String apematerno, String dni, String fechanacimiento, String usuario, String correo, String contrasena) {
         this.codcliente = codcliente;
         this.nombre = nombre;
         this.apepaterno = apepaterno;
@@ -34,6 +34,11 @@ public class Customer {
         this.fechanacimiento = fechanacimiento;
         this.contrasena = contrasena;
     }
+
+    public Customer(int codcliente) {
+        this.codcliente = codcliente;
+    }
+    
 
     public int getCodcliente() {
         return codcliente;
@@ -110,6 +115,7 @@ public class Customer {
     
     @Override
     public String toString() {
-        return getNombre();
+        return "Customer{" + "codcliente=" + codcliente + ", nombre=" + nombre + "}";
     }
+
 }

@@ -109,7 +109,7 @@
                 </button>
 
                 <% if (isLoggedIn) { %>
-                <button class="btnnavbar btn-color" style="padding: 0px 16px; cursor: pointer; height: 36px">
+                <button class="btnnavbar btn-color" id="userLogged" data-user="<%= customer.getCodcliente()%>" style="padding: 0px 16px; cursor: pointer; height: 36px">
                     <a href="logout">Cerrar sesión</a>
                 </button>
                 <% }%>       

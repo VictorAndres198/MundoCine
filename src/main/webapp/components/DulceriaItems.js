@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const contents = document.querySelectorAll(".content");
+    const contents = document.querySelectorAll(".card");
 
     contents.forEach(content => {
         const increaseBtn = content.querySelector(".amount-plus");

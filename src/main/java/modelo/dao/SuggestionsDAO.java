@@ -24,14 +24,13 @@ public class SuggestionsDAO {
     
     public String insert(Suggestions s) {
         String resp = "";
-        PreparedStatement ps;
-        ResultSet rs;
-        String cadSQL = "INSERT INTO sugerencias (CodCliente, Asunto, Contenido) VALUES(1,?,?) ";
-        
-        try {
-            ps = cnx.prepareStatement(cadSQL);
-            ps.setString(1, s.getAsunto());
-            ps.setString(2, s.getContenido());
+        String cadSQL = "INSERT INTO Sugerencias (Nombre, Correo, Asunto, Contenido) VALUES (?, ?, ?, ?)";
+
+        try (PreparedStatement ps = cnx.prepareStatement(cadSQL)) {
+            ps.setString(1, s.getNombre());
+            ps.setString(2, s.getCorreo());
+            ps.setString(3, s.getAsunto());
+            ps.setString(4, s.getContenido());
             ps.executeUpdate();
         } catch (SQLException ex) {
             resp = ex.getMessage();

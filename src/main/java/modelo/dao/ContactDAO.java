@@ -25,22 +25,20 @@ public class ContactDAO {
     
     public String insert(Contact c) {
         String resp = "";
-        PreparedStatement ps;
-        ResultSet rs;
-        String cadSQL = "INSERT INTO contacto (nombre, correo, telefono, mensaje) VALUES(?,?,?,?) ";
-        
-        try {
-            ps = cnx.prepareStatement(cadSQL);
+        String cadSQL = "INSERT INTO contacto (nombre, correo, telefono, mensaje) VALUES (?, ?, ?, ?)";
+        try {PreparedStatement ps = cnx.prepareStatement(cadSQL);
             ps.setString(1, c.getNombre());
             ps.setString(2, c.getCorreo());
             ps.setString(3, c.getTelefono());
             ps.setString(4, c.getMensaje());
-            ps.executeUpdate(); 
+            ps.executeUpdate();
         } catch (SQLException ex) {
             resp = ex.getMessage();
         }
+
         return resp;
     }
+
     public Contact get(int idx) {
         Contact c = null;
         PreparedStatement ps;

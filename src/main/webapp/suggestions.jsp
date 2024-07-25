@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Suggestions
-    Created on : 21 abr. 2024, 20:29:36
-    Author     : Victor
---%>
-
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%@ page import="modelo.dto.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,6 +15,40 @@
         <link href="resources/css/home.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/piePagina.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/navbar.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            .message-success {
+                color: green;
+                font-size: 16px;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+            }
+            .message-success i {
+                margin-right: 8px;
+            }
+        </style>
+        <script>
+            $(document).ready(function(){
+                $('#formSugerencias').submit(function(event){
+                    event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '<%= request.getContextPath()%>/cntSuggestions',
+                        data: $(this).serialize(), // Serializa el formulario
+                        success: function(response){
+                            $('#mensaje').html('<i class="fas fa-check-circle"></i> ' + response).addClass('message-success');
+                            $('#formSugerencias')[0].reset(); // Limpiar el formulario
+                        },
+                        error: function(){
+                            $('#mensaje').text('Error al enviar la sugerencia.');
+                        }
+                    });
+                });
+            });
+        </script>
     </head>
     <body>     
         <!-- ESTO ES EL NAVBAR -->
@@ -39,36 +67,32 @@
             <div class="boxForm">
                 <div class="suggestions form">
                     <h3>Envíanos tu sugerencia.</h3>
-                    <form action="<%= request.getContextPath()%>/cntSuggestions" method="post" class="formulario" id="formSugerencias">
+                    <form class="formulario" id="formSugerencias">
                         <div class ="form">
                             <div class="row50">
                                 <div class="inputForm">
                                     <span>Nombre Completo</span>
-                                    <input type="text" name="nombre" id="nombre"
-                                           placeholder="Carla Soto">
+                                    <input type="text" name="nombre" id="nombre" placeholder="Carla Soto">
                                     <span>Correo Electrónico</span>
-                                    <input type="text" name="correo" id="correo"
-                                           placeholder="carlas@gmail.com">
+                                    <input type="text" name="correo" id="correo" placeholder="carlas@gmail.com">
                                     <span>Asunto</span>
-                                    <input type="text" name="asunto" id="asunto"
-                                           placeholder="Mejora de ofertas..." value="${asunto}">
+                                    <input type="text" name="asunto" id="asunto" placeholder="Mejora de ofertas...">
                                 </div>
                                 <div class="row100">
                                     <div class="inputForm">
                                         <span>Sugerencia</span>
-                                        <textarea type="text" name="sugerencia" id="sugerencia"
-                                                  placeholder="Escriba su sugerencia aquí..." value="${sugerencia}">
-                                        </textarea>
+                                        <textarea name="sugerencia" id="sugerencia" placeholder="Escriba su sugerencia aquí..."></textarea>
                                     </div>
                                 </div>
                                 <div class="row100">
                                     <div class="inputForm">
-                                        <input type="submit"  style="border-radius: 5px;" value="Enviar" name="accion">
+                                        <input type="submit" style="border-radius: 5px;" value="Enviar">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
+                    <div id="mensaje" class="message-success" style="margin-top: 10px;"></div>
                 </div>
             </div>
         </div>
