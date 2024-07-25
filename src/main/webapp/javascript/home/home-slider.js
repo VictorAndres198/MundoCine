@@ -51,3 +51,60 @@ function scrollestrenos() {
     const transformValue = counterestrenos * itemWidth;
     document.querySelector(".mp-slider-estrenos").style.transform = `translateX(-${transformValue}px)`;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById("ratingModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    function openModal(movieId, movieTitle) {
+        document.getElementById('movieId').value = movieId;
+        document.getElementById('movieTitle').value = movieTitle;
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+document.getElementById('ratingForm').onsubmit = function(event) {
+    event.preventDefault();
+    console.log('Formulario enviado'); // Depurar
+    var movieId = document.getElementById('movieId').value;
+    var movieTitle = document.getElementById('movieTitle').value;
+    var rating = document.getElementById('rating').value;
+
+    console.log('ID de la película:', movieId);
+    console.log('Título de la película:', movieTitle);
+    console.log('Calificación:', rating);
+
+    fetch('/MundoCine/SvHome', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `movieId=${encodeURIComponent(movieId)}&movieTitle=${encodeURIComponent(movieTitle)}&rating=${encodeURIComponent(rating)}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        modal.style.display = "none";
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+};
+
+    document.querySelectorAll('.btn-calification').forEach(button => {
+        button.addEventListener('click', function() {
+            var movieId = this.getAttribute('data-movie-id');
+            var movieTitle = this.getAttribute('data-movie-title');
+            openModal(movieId, movieTitle);
+        });
+    });
+});

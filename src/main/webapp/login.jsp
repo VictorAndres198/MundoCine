@@ -56,7 +56,10 @@
                         <a href="create-account.jsp">
                             <span>Crear cuenta</span>
                         </a>
+                        
                     </footer>
+                    
+                        <a href="SvHome?action=authenticate">Iniciar sesión con TMDB</a>
                 </div>
             </div>
         </div>

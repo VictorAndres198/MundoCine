@@ -1,12 +1,14 @@
 package modelo.dto;
 
 public class Movie {
+    private String id;
     private String title;
     private String imageUrl;
     private String rating;
     private String releaseDate;
 
-    public Movie(String title, String imageUrl, String rating, String releaseDate) {
+    public Movie(String id, String title, String imageUrl, String rating, String releaseDate) {
+        this.id = id;
         this.title = truncateTitle(title);
         this.imageUrl = imageUrl;
         this.rating = rating;
@@ -23,6 +25,8 @@ public class Movie {
     }
     
     // Getters y setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = truncateTitle(title); }
     public String getImageUrl() { return imageUrl; }

@@ -56,11 +56,12 @@
             }
         </style>
     </head>
-    <body>
+    <body 
+    style="">
         <!-- ESTO ES EL NAVBAR -->
         <jsp:include page="components/navbar.jsp"/>
 
-        <div class="container mt-5">
+        <div class="container mt-5 mb-5">
             <h1 class="text-center">Reclamos</h1>
             <p class="text-center">¡Nos encantaría escuchar algun inconveniente que hayas tenido! ¿Tienes alguna idea para mejorar nuestro servicio? ¡Déjanos tus comentarios aquí!</p>
 

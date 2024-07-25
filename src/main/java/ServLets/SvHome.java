@@ -3,6 +3,8 @@ package ServLets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import modelo.dto.Movie;
+import org.json.JSONException;
 
 public class SvHome extends HttpServlet {
 
@@ -36,6 +39,13 @@ public class SvHome extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String action = request.getParameter("action");
+        if (action != null && action.equals("authenticate")) {
+            handleAuthentication(request, response);
+        } else if (action != null && action.equals("callback")) {
+            handleCallback(request, response);
+        } else {
         // Llamada al API y procesamiento de la respuesta
         String upcomingApiUrl = buildUpcomingApiUrl();
         List<Movie> upcomingMovies = fetchMoviesFromMultiplePages(upcomingApiUrl, 4, 0, true);
@@ -65,14 +75,155 @@ public class SvHome extends HttpServlet {
 
         // Redirigir al JSP
         request.getRequestDispatcher("home.jsp").forward(request, response);
+        }
+    }
+    
+    private void handleAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String requestToken = getRequestToken();
+        String redirectUrl = "https://www.themoviedb.org/authenticate/" + requestToken + "?redirect_to=http://localhost:8080/MundoCine/SvHome?action=callback&request_token=" + requestToken;
+        response.sendRedirect(redirectUrl);
+    }
+    
+    private void handleCallback(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String requestToken = request.getParameter("request_token");
+        String sessionId = createSession(requestToken);
+        if (sessionId != null) {
+            request.getSession().setAttribute("session_id", sessionId);
+            response.sendRedirect("index.jsp");
+        } else {
+            response.getWriter().write("Failed to create session");
+        }
+    }
+    
+        private String getRequestToken() throws IOException {
+        String apiUrl = "https://api.themoviedb.org/3/authentication/token/new?api_key=" + API_KEY;
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            JSONObject jsonResponse = new JSONObject(response.toString());
+            return jsonResponse.getString("request_token");
+        } else {
+            throw new IOException("Failed to get request token");
+        }
     }
 
+    private String createSession(String requestToken) throws IOException {
+        String apiUrl = "https://api.themoviedb.org/3/authentication/session/new?api_key=" + API_KEY;
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json; utf-8");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
+
+        String jsonInputString = new JSONObject().put("request_token", requestToken).toString();
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder responseStrBuilder = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                responseStrBuilder.append(inputLine);
+            }
+            in.close();
+
+            JSONObject jsonResponse = new JSONObject(responseStrBuilder.toString());
+            return jsonResponse.getString("session_id");
+        } else {
+            return null;
+        }
+    }
+    
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
 
+    // Crear un JSON de respuesta
+    JSONObject jsonResponse = new JSONObject();
+    jsonResponse.put("status", "success");
+    jsonResponse.put("message", "Calificación recibida");
+
+    PrintWriter out = response.getWriter();
+    out.print(jsonResponse.toString());
+    out.flush();
+}
+
+    
+    
+        private void rateMovie(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // URL de la API para calificar una película
+        String movieId = request.getParameter("movieId");
+        String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/rating";
+        String sessionId = (String) request.getSession().getAttribute("session_id");
+
+        if (sessionId == null) {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User is not authenticated");
+            return;
+        }
+
+        // Configurar la conexión
+        URL url = new URL(apiUrl + "?api_key=" + API_KEY + "&session_id=" + sessionId);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json; utf-8");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
+
+        // Crear el JSON de la solicitud
+        double rating = Double.parseDouble(request.getParameter("rating"));
+        String jsonInputString = new JSONObject()
+            .put("value", rating)
+            .toString();
+
+        // Enviar la solicitud
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+
+        // Leer la respuesta
+        int responseCode = connection.getResponseCode();
+        StringBuilder responseStrBuilder = new StringBuilder();
+        if (responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_CREATED) {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                    responseStrBuilder.append(responseLine.trim());
+                }
+            }
+        } else {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getErrorStream(), "utf-8"))) {
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                    responseStrBuilder.append(responseLine.trim());
+                }
+            }
+        }
+
+        // Establecer la respuesta HTTP
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(responseStrBuilder.toString());
+    }
+    
     @Override
     public String getServletInfo() {
         return "Short description";
@@ -163,6 +314,17 @@ public class SvHome extends HttpServlet {
 
             for (int i = 0; i < results.length(); i++) {
                 JSONObject movieJson = results.getJSONObject(i);
+                    Object idObj = movieJson.get("id"); // Obtener el ID como Object
+                    String id;
+
+                    // Verificar el tipo de ID y convertirlo a String si es necesario
+                    if (idObj instanceof Integer) {
+                        id = String.valueOf(idObj); // Convertir entero a String
+                    } else if (idObj instanceof String) {
+                        id = (String) idObj; // Ya es una cadena
+                    } else {
+                        throw new JSONException("ID no es una cadena ni un entero");
+                    }
                 String title = movieJson.getString("title");
 
                 // Verificar si "poster_path" y "release_date" están presentes y no son nulos
@@ -186,7 +348,7 @@ public class SvHome extends HttpServlet {
                         if ((ratingThreshold == 0 && voteAverage == 0) || (ratingThreshold == 1 && voteAverage > 0)) {
                             String formattedVoteAverage = df.format(voteAverage);
                             String formattedDate = formatDate(releaseMonth, releaseDay);
-                            Movie movie = new Movie(title, posterPath, formattedVoteAverage, formattedDate);
+                            Movie movie = new Movie(id, title, posterPath, formattedVoteAverage, formattedDate);
 
                             if (isUpcomingMovies) {
                                 moviesThisYear.add(movie);

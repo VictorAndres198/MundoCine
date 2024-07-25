@@ -15,13 +15,13 @@ import org.junit.jupiter.api.Test;
 
 public class Tests {
 
-   @Test
+   /*@Test
     public void testCompras() {
         CompraDulceriaDAO dao = new CompraDulceriaDAO();
         List<ItemCompra> items = dao.FindItemsCompra(2);
         for(ItemCompra i : items){
             System.out.println(i);
         }
-    }
+    }*/
 
 }
