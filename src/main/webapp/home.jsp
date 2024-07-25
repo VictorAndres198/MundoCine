@@ -277,7 +277,7 @@
             <input type="hidden" id="movieId" name="movieId">
             <input type="hidden" id="movieTitle" name="movieTitle">
             <label for="rating">Calificación:</label>
-            <input type="number" id="rating" name="rating" min="0" max="10" step="0.1" required>
+            <input type="number" id="rating" name="rating" min="0" max="100" step="10" required>
             <button type="submit">Enviar Calificación</button>
         </form>
     </div>
