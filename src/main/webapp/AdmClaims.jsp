@@ -21,23 +21,23 @@
             }
         </style>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var table = $('#claimsTable').DataTable({
                     ajax: {
                         url: 'SvAdmClaims',
-                        data: function(d) {
+                        data: function (d) {
                             d.codLocal = $('#codLocal').val(); // Add codLocal parameter to the request
                         },
                         dataSrc: ''
                     },
                     columns: [
-                        { data: 'id_reclamos' },
-                        { data: 'nombre_cliente' },
-                        { data: 'correo_reclamo' },
-                        { data: 'dni_reclamo' },
-                        { data: 'fecha_reclamo' },
-                        { data: 'asunto_reclamo' },
-                        { data: 'contenido_reclamo' },
+                        {data: 'id_reclamos'},
+                        {data: 'nombre_cliente'},
+                        {data: 'correo_reclamo'},
+                        {data: 'dni_reclamo'},
+                        {data: 'fecha_reclamo'},
+                        {data: 'asunto_reclamo'},
+                        {data: 'contenido_reclamo'},
                         {
                             data: null,
                             className: 'dt-center',
@@ -47,17 +47,17 @@
                     ]
                 });
 
-                $('#codLocal').change(function() {
+                $('#codLocal').change(function () {
                     table.ajax.reload();
                 });
 
-                $('#claimsTable tbody').on('click', '.edit-btn', function() {
+                $('#claimsTable tbody').on('click', '.edit-btn', function () {
                     var data = table.row($(this).parents('tr')).data();
                     $.ajax({
                         url: 'SvAdmClaims',
                         type: 'GET',
-                        data: { action: 'getClaim', id: data.id_reclamos },
-                        success: function(data) {
+                        data: {action: 'getClaim', id: data.id_reclamos},
+                        success: function (data) {
                             $('#editClaimModal input[name="id_reclamos"]').val(data.id_reclamos);
                             $('#editClaimModal input[name="nombre_cliente"]').val(data.nombre_cliente);
                             $('#editClaimModal input[name="correo_reclamo"]').val(data.correo_reclamo);
@@ -70,32 +70,32 @@
                     });
                 });
 
-                $('#claimsTable tbody').on('click', '.delete-btn', function() {
+                $('#claimsTable tbody').on('click', '.delete-btn', function () {
                     var data = table.row($(this).parents('tr')).data();
                     $('#confirmDeleteModal input[name="id_reclamos"]').val(data.id_reclamos);
                     $('#confirmDeleteModal').modal('show');
                 });
 
-                $('#editClaimForm').submit(function(e) {
+                $('#editClaimForm').submit(function (e) {
                     e.preventDefault();
                     $.ajax({
                         url: 'SvAdmClaims',
                         type: 'POST',
                         data: $(this).serialize() + '&action=update',
-                        success: function() {
+                        success: function () {
                             $('#editClaimModal').modal('hide');
                             table.ajax.reload(); // Refresh the table after editing
                         }
                     });
                 });
 
-                $('#confirmDeleteForm').submit(function(e) {
+                $('#confirmDeleteForm').submit(function (e) {
                     e.preventDefault();
                     $.ajax({
                         url: 'SvAdmClaims',
                         type: 'POST',
-                        data: { action: 'delete', id: $('#confirmDeleteModal input[name="id_reclamos"]').val() },
-                        success: function() {
+                        data: {action: 'delete', id: $('#confirmDeleteModal input[name="id_reclamos"]').val()},
+                        success: function () {
                             $('#confirmDeleteModal').modal('hide');
                             table.ajax.reload(); // Refresh the table after deletion
                         }
