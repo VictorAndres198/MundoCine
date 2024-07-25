@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Suggestions
-    Created on : 21 abr. 2024, 20:29:36
-    Author     : Victor
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -61,6 +55,8 @@
                             <label for="ContenidoReclamo">Reclamo:</label><br>
                             <textarea class="up" id="ContenidoReclamo" name="ContenidoReclamo" rows="4" cols="42" required></textarea><br>           
                             <input class="upbtn btn-color" type="submit" value="Enviar" name="accion">
+                            
+                            </select>
                         </form>
                     </div>
                 </div>
