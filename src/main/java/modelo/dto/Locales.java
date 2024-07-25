@@ -26,6 +26,10 @@ public class Locales {
         this.Nombre = Nombre;
         this.Direccion = Direccion;
     };
+
+    public Locales(String Nombre) {
+        this.Nombre = Nombre;
+    }
     
     public int getCodLocal() {
         return CodLocal;
@@ -50,9 +54,9 @@ public class Locales {
     public void setDireccion(String Direccion) {
         this.Direccion = Direccion;
     }
-    
+
     @Override
     public String toString() {
-        return getNombre();
-    }
+        return "Locales{" + "CodLocal=" + CodLocal + ", Nombre=" + Nombre + ", Direccion=" + Direccion + "}";
+    } 
 }

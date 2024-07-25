@@ -129,6 +129,48 @@ public class CustomerDAO {
         }
         return resp;
     }
+    
+    public boolean FindValidCustomer(String dniCustomer,String pass) {
+        boolean CustomerFound = true;
+        
+        String query = "SELECT count(*) as rs FROM mundocine.cliente where DNI=?"
+                + "AND contraseña = ?;";
+        
+        try( Connection conn = new ConectaBD().getConnection();
+             PreparedStatement pst = conn.prepareStatement(query)){
+             pst.setString(1, dniCustomer);
+             pst.setString(2, pass);
+            //Ejecuta la busqueda
+            
+            try(ResultSet rs = pst.executeQuery()){
+                rs.next();
+                if(rs.getInt("rs")==0){
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+        }
+        return CustomerFound;
+    }
+
+    public int getCustomerId(String dniCustomer) {
+        int CustomerId = 0;
+        
+        String query = "SELECT CodCliente FROM cliente where DNI=?;";
+        
+        try( Connection conn = new ConectaBD().getConnection();
+             PreparedStatement pst = conn.prepareStatement(query)){
+             pst.setString(1, dniCustomer);
+            //Ejecuta la busqueda
+            
+            try(ResultSet rs = pst.executeQuery()){
+                rs.next();
+                CustomerId =  rs.getInt("CodCliente");
+            }
+        } catch (Exception e) {
+        }
+        return CustomerId;
+    }
 
     /*public Customer get(int idx) {
         Customer cst = null;
@@ -155,4 +197,6 @@ public class CustomerDAO {
         }
         return cst;
     }*/
+    
+    
 }

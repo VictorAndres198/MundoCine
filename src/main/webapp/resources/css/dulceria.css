@@ -1,22 +1,8 @@
-.container-principal{
-    display: flex; 
-    flex-direction: column; 
-    width: 1280px; 
-    place-items: center;
-    margin: auto;
-
-}
 
 .container{
     background: #fff;
-    display: grid;
-    grid-template-rows: 0.7fr 0.7fr 1fr;
-    justify-items: center;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    border-radius: 25px;
-    width: 100%
+
+
 }
 
 .container-title{

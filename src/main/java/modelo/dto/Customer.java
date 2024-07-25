@@ -35,6 +35,11 @@ public class Customer {
         this.contrasena = contrasena;
     }
 
+    public Customer(int codcliente) {
+        this.codcliente = codcliente;
+    }
+    
+
     public int getCodcliente() {
         return codcliente;
     }
@@ -110,6 +115,7 @@ public class Customer {
     
     @Override
     public String toString() {
-        return getNombre();
+        return "Customer{" + "codcliente=" + codcliente + ", nombre=" + nombre + "}";
     }
+
 }

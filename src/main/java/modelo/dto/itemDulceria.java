@@ -2,14 +2,14 @@
 package modelo.dto;
 
 
-public class itemDulceria {
+public class ItemDulceria {
     private int codigo;
     private CategoriaItem categoria;
     private String nombre;
     private String descripcion;
     private String precio;
 
-    public itemDulceria(int codigo, CategoriaItem categoria, String nombre, 
+    public ItemDulceria(int codigo, CategoriaItem categoria, String nombre, 
             String descripcion, String precio) {
         this.codigo = codigo;
         this.categoria = categoria;
@@ -18,7 +18,11 @@ public class itemDulceria {
         this.precio = precio;
     }
 
-
+    public ItemDulceria(int codigo, String nombre) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+    }
+    
     
     public int getCodigo() {
         return codigo;

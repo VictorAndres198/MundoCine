@@ -37,7 +37,7 @@ function redirigirReclamos() {
 
 function redirigirDulceria() {
     // Redirigir a la página deseada
-    window.location.href = "/MundoCine/Dulceria";
+    window.location.href = "dulceria.jsp";
 }
 
 function redirigirLocales() {
