@@ -11,11 +11,12 @@ public class ConectaBD {
     public Connection getConnection() {
         Connection cnx = null;
 
-        String url = "jdbc:mysql://localhost:3306/mundocine?useTimeZone=true&"
+        String url = "jdbc:mysql://localhost:3306/mundocine?useTimeZone=true&characterEncoding=UTF-8&"
                 + "serverTimezone=UTC&autoReconnect=true";
 
         String user = "root";
         String clave = "123123";
+
 
         String Driver = "com.mysql.cj.jdbc.Driver";
 

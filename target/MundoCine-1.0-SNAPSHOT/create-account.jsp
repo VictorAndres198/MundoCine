@@ -4,7 +4,7 @@
     Author     : usuario
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,11 +92,7 @@
                     <input type="password" placeholder="Crear contraseña" data-test="create-account-password" name="contrasena">
                 </div>
             </div>
-            <%--<div class="">
-                <div class="create-account-box">
-                    <input type="password" placeholder="Vuelve a escribir la contraseña" data-test="create-account-confirm-password" value="">
-                </div>
-            </div>--%>
+            
             
             <input class="btn-creat-account" data-test="create-account-create-button" type="submit"  style="border-radius: 5px;" value="Crear Cuenta" name="accion">
         </form>
