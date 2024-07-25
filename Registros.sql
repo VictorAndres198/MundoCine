@@ -1,5 +1,4 @@
-ALTER TABLE Compra MODIFY COLUMN Hora time;
-ALTER TABLE Compra ADD COLUMN Total decimal(5,2);
+
 
 insert into categoria(Nombre) values ("Bebida");
 insert into categoria(Nombre) values ("Canchita");
@@ -34,5 +33,4 @@ VALUES ('Ana Martínez', 'ana.martinez@example.com', '44332211', '2024-07-07', '
 INSERT INTO Reclamos (NombreCli, CorreoReclamo, dniReclamo, fechaReclamo, AsuntoReclamo, ContenidoReclamo, CodLocal) 
 VALUES ('Luis Fernández', 'luis.fernandez@example.com', '99887766', '2024-07-06', 'Retraso en la película', 'La película comenzó con 30 minutos de retraso.', 2);
 
-SELECT * FROM mundocine.itemdulceria;
-SELECT * FROM mundocine.categoria;
+
